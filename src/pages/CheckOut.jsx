@@ -1,0 +1,390 @@
+import React, { useState } from 'react'
+import CommonHead from '../components/common/CommonHead'
+import { FaRegCircleUser } from "react-icons/fa6";
+import { BiGitMerge } from "react-icons/bi";
+import { FaEraser } from "react-icons/fa";
+import { AArrowDown, Armchair, Eraser, Scaling } from 'lucide-react';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer'
+import ResNavbar from '../components/ResNavbar'
+import icon from '../assets/images/item-image.png'
+import BreadCrum from '../components/common/BreadCrum';
+
+
+const CheckOut = () => {
+
+
+const [value , setValue ] = useState(1)
+
+
+const increment = ()=>{ 
+ setValue(value+1)
+
+}
+
+const decrement = ()=>{
+
+  if(value >1){
+    setValue(value-1)
+}
+
+}
+
+
+
+
+  return (
+    <>
+    
+
+
+
+
+    <section id='checkout'>
+        <div className="container">
+          <BreadCrum breadContent={'Checkout'} />
+            <div className="checkout_row pt-[40px] px-[30px]  lg:px-0">
+
+                      <div className='lg:hidden w-[312px]   '>
+                          <div><h2 className='text-[20px] lg:text-[24px] font-semibold font-poppins text-second'>Order summary</h2></div>
+                          <span className='inline-block w-[312px] lg:w-[618px] border border-[#E5E7EB]'></span>
+
+                          <div className='pt-[24px] flex justify-between items-center'>
+                            <div className=' flex gap-[20px] '>
+                              <div>
+                                <img src={icon} alt="icon" />
+                              </div>
+                              <div>
+                                <h2 className=' text-[9px] font-semibold font-poppins text-second '>Black Automatic Watch</h2>
+                                <p className='text-[12px] font-semibold font-poppins text-primary'>One size</p>
+                               
+                          
+                                   <div className=' py-[20px] flex items-center gap-[33px]'>
+
+                                     <div className=' flex  justify-between items-center'>
+                         <div className=' '>
+                            <h2 className='text-[14px] font-semibold font-poppins text-second'>$169.99</h2>
+                            <p className=' line-through text-[12px] flex justify-start font-medium font-poppins text-primary'>$199.99</p>
+                          </div>
+                          </div>
+                                  <div className='w-[110px] bg-[#F8F8F8] flex justify-around py-[8px] px-[12px] rounded-full'>
+                                <button onClick={decrement} className=' border border-[#E5E7EB] rounded-full w-[24px] h-[24px] flex bg-white justify-center items-center '>-</button>
+                                <h2 className='text-[16px] font-medium font-poppins text-primary'>1</h2>
+                                <button  onClick={increment} className='border border-[#E5E7EB] rounded-full w-[24px] h-[24px] flex  bg-white justify-center items-center'>+</button>              
+                              </div>
+                            </div>
+
+                              </div>    
+                            </div>
+
+                      
+                   
+
+                          </div>
+                          <span className='inline-block w-[312px] lg:w-[618px] border border-[#E5E7EB]'></span>
+ 
+                          <div className='pt-[24px] flex justify-between items-center'>
+                            <div className=' flex gap-[20px] '>
+                              <div>
+                                <img src={icon} alt="icon" />
+                              </div>
+                              <div>
+                                <h2 className=' text-[9px] font-semibold font-poppins text-second '>Black Automatic Watch</h2>
+                                <p className='text-[12px] font-semibold font-poppins text-primary'>One size</p>
+                               
+                          
+                                   <div className=' py-[20px] flex items-center gap-[33px]'>
+
+                                     <div className=' flex  justify-between items-center'>
+                         <div className=' '>
+                            <h2 className='text-[14px] font-semibold font-poppins text-second'>$169.99</h2>
+                            <p className=' line-through text-[12px] flex justify-start font-medium font-poppins text-primary'>$199.99</p>
+                          </div>
+                          </div>
+                                  <div className='w-[110px] bg-[#F8F8F8] flex justify-around py-[8px] px-[12px] rounded-full'>
+                                <button className=' border border-[#E5E7EB] rounded-full w-[24px] h-[24px] flex bg-white justify-center items-center '>-</button>
+                                <h2 className='text-[16px] font-medium font-poppins text-primary'>1</h2>
+                                <button className='border border-[#E5E7EB] rounded-full w-[24px] h-[24px] flex  bg-white justify-center items-center'><p className=''>+</p></button>              
+                              </div>
+                            </div>
+
+                              </div>    
+                            </div>
+
+                      
+                   
+
+                          </div>
+
+
+
+                          <span className='inline-block w-[312px] lg:w-[618px] border border-[#E5E7EB]'></span>
+                        </div>
+
+
+
+              <div className='pb-[52px]'><CommonHead headh2={'Checkout'} /></div>
+
+
+                <div className=' lg:flex lg:justify-between'> 
+ 
+ <div>
+
+                <div className='w-[312px] lg:w-[638px] mb-[24px]  lg:mb-[40px] border border-[#E5E7EB]'>
+                  <div className='py-[24px] pl-[24px] flex  items-center gap-[10px]'>
+                    <FaRegCircleUser /><p className='text-[14px] lg:text-[16px] font-medium  font-poppins text-primary'>CONTACT INFO</p></div>
+<span className=' inline-block w-full border border-[#E5E7EB]'></span>
+<div className='lg:flex gap-[24px] py-[24px] pl-[24px]'>
+  <div className='flex flex-col '>
+    <label className=' pb-[8px] text-[14px] lg:text-[16px] font-semibold font-poppins text-second'>Your phone number</label>
+    <input className='w-[264px] h-[43px] pl-[20px] lg:w-[283px] rounded-[12px]   border border-[#E5E7EB] outline-none' type="text" name="" id="" />
+  </div>
+    <div className='flex flex-col pt-[24px] lg:pt-0 '>
+    <label className=' pb-[8px] text-[14px] lg:text-[16px] font-semibold font-poppins text-second'>Email address</label>
+    <input className='w-[264px] h-[43px] pl-[20px] lg:w-[283px] rounded-[12px]   border border-[#E5E7EB] outline-none' type="text" name="" id="" />
+  </div>
+</div>
+
+                </div>
+                <div className='w-[312px] lg:w-[638px] mb-[24px] lg:mb-[40px] border border-[#E5E7EB]'>
+                  <div className='py-[24px] pl-[24px] flex  items-center gap-[10px]'>
+                    <BiGitMerge />
+                    <p className='text-[14px] lg:text-[16px] font-medium  font-poppins text-primary'>SHIPPING ADDRESS</p></div>
+<span className=' inline-block w-full border border-[#E5E7EB]'></span>
+<div className='flex gap-[24px] py-[24px] pl-[24px]'>
+  <div className='flex flex-col '>
+    <label className=' pb-[8px] text-[14px] lg:text-[16px] font-semibold font-poppins text-second'>First name</label>
+    <input className='w-[123px] h-[43px] pl-[20px] lg:w-[282px] rounded-[12px]   border border-[#E5E7EB] outline-none' type="text" name="" id="" />
+  </div>
+    <div className='flex flex-col  lg:pt-0 '>
+    <label className=' pb-[8px] text-[14px] lg:text-[16px] font-semibold font-poppins text-second'>Last name</label>
+    <input className='w-[123px] h-[43px] pl-[20px] lg:w-[282px] rounded-[12px]   border border-[#E5E7EB] outline-none' type="text" name="" id="" />
+  </div>
+</div>
+<div className='lg:flex gap-[24px] py-[24px] pl-[24px]'>
+  <div className='flex flex-col '>
+    <label className=' pb-[8px] text-[14px] lg:text-[16px] font-semibold font-poppins text-second'>Address line 1</label>
+    <input className='w-[264px] h-[43px] pl-[20px] lg:w-[384px] rounded-[12px]   border border-[#E5E7EB] outline-none' type="text" name="" id="" />
+  </div>
+    <div className='flex flex-col pt-[24px] lg:pt-0 '>
+    <label className=' pb-[8px] text-[14px] lg:text-[16px] font-semibold font-poppins text-second'>Apt, Suite</label>
+    <input className='w-[264px] h-[43px] pl-[20px] lg:w-[180px] rounded-[12px]   border border-[#E5E7EB] outline-none' type="text" name="" id="" />
+  </div>
+</div>
+<div className=' hidden lg:flex gap-[24px]  py-[24px] pl-[24px]'>
+  <div className=' flex-col  lg:flex '>
+    <label className=' pb-[8px] text-[14px] lg:text-[16px] font-semibold font-poppins text-second'>Address line 2</label>
+    <input className='w-[264px] h-[43px] pl-[20px] lg:w-[588px] rounded-[12px]   border border-[#E5E7EB] outline-none' type="text" name="" id="" />
+  </div>
+</div>
+<div className='flex gap-[24px] py-[24px] pl-[24px]'>
+  <div className='flex flex-col '>
+    <label className=' pb-[8px] text-[14px] lg:text-[16px] font-semibold font-poppins text-second'>City</label>
+    <input className='w-[123px] h-[43px] pl-[20px] lg:w-[282px] rounded-[12px]   border border-[#E5E7EB] outline-none' type="text" name="" id="" />
+  </div>
+    <div className='flex flex-col  lg:pt-0 '>
+    <label className=' pb-[8px] text-[14px] lg:text-[16px] font-semibold font-poppins text-second'>Country</label>
+    <input className='w-[123px] h-[43px] pl-[20px] lg:w-[282px] rounded-[12px]   border border-[#E5E7EB] outline-none' type="text" name="" id="" />
+  </div>
+</div>
+<div className='flex gap-[24px] py-[24px] pl-[24px]'>
+  <div className='flex flex-col '>
+    <label className=' pb-[8px] text-[14px] lg:text-[16px] font-semibold font-poppins text-second'>State/Province</label>
+    <input className='w-[123px] h-[43px] pl-[20px] lg:w-[282px] rounded-[12px]   border border-[#E5E7EB] outline-none' type="text" name="" id="" />
+  </div>
+    <div className='flex flex-col  lg:pt-0 '>
+    <label className=' pb-[8px] text-[14px] lg:text-[16px] font-semibold font-poppins text-second'>Postal code</label>
+    <input className='w-[123px] h-[43px] pl-[20px] lg:w-[282px] rounded-[12px]   border border-[#E5E7EB] outline-none' type="text" name="" id="" />
+  </div>
+</div>
+
+                </div>
+               <div className='w-[312px] lg:w-[638px] mb-[24px] lg:mb-[40px] border border-[#E5E7EB]'>
+                  <div className='py-[24px] pl-[24px] flex  items-center gap-[10px]'>
+           <Eraser />
+                    <p className='text-[14px] lg:text-[16px] font-medium  font-poppins text-primary'>PAYMENT</p></div>
+<span className=' inline-block w-full border border-[#E5E7EB]'></span>
+<div className='flex gap-[24px] py-[24px] pl-[24px]'>
+  <div className='flex flex-col '>
+    <label className=' pb-[8px] text-[14px] lg:text-[16px] font-semibold font-poppins text-second'>Card number</label>
+    <input className='w-[264px] h-[43px] pl-[20px] lg:w-[590px] rounded-[12px]   border border-[#E5E7EB] outline-none' type="text" name="" id="" />
+  </div>
+
+</div>
+<div className='pl-[24px]'>
+      <div className='flex flex-col  lg:pt-0 '>
+    <label className=' pb-[8px] text-[14px] lg:text-[16px] font-semibold font-poppins text-second'>Name on the card</label>
+    <input className='w-[264px] h-[43px] pl-[20px] lg:w-[590px] rounded-[12px]   border border-[#E5E7EB] outline-none' type="text" name="" id="" />
+  </div>
+</div>
+<div className='flex gap-[24px] py-[24px] pl-[24px]'>
+  <div className='flex flex-col '>
+    <label className=' pb-[8px] text-[14px] lg:text-[16px] font-semibold font-poppins text-second'>Expiration date <span className=' hidden lg:inline-block'>(MM/YY)</span></label>
+    <input className='w-[148px] h-[43px] pl-[20px] lg:w-[386px] rounded-[12px]   border border-[#E5E7EB] outline-none' type="text" name="" id="" />
+  </div>
+    <div className='flex flex-col  lg:pt-0 '>
+    <label className=' pb-[8px] text-[14px] lg:text-[16px] font-semibold font-poppins text-second'>CVC</label>
+    <input className='w-[100px] h-[43px] pl-[20px] lg:w-[180px] rounded-[12px]   border border-[#E5E7EB] outline-none' type="text" name="" id="" />
+  </div>
+</div>
+
+
+
+                </div>
+ </div>
+
+
+              <div>
+                        <div className=' hidden lg:block w-[312px]  lg:w-[618px]  px-[33px] lg:px-0 '>
+                          <div><h2 className='text-[20px] lg:text-[24px] font-semibold font-poppins text-second'>Order summary</h2></div>
+                          <span className='inline-block w-[312px] lg:w-[618px] border border-[#E5E7EB]'></span>
+
+                          <div className='pt-[24px] flex justify-between items-center'>
+                            <div className=' flex gap-[20px]'>
+                              <div>
+                                <img src={icon} alt="icon" />
+                              </div>
+                              <div>
+                                <h2 className='text-[16px] font-semibold font-poppins text-second'>Black Automatic Watch</h2>
+                                <p className='text-[14px] font-normal flex gap-[10px] font-poppins text-primary'>
+                                  <Scaling />
+                                   One size</p>
+                                   <div className='py-[38px] flex items-center justify-between'>
+                              <div className='w-[110px] bg-[#F8F8F8] flex justify-around py-[8px] px-[12px] rounded-full'>
+                                <button className=' border border-[#E5E7EB] rounded-full w-[24px] h-[24px] flex bg-white justify-center items-center '><p className=''>-</p></button>
+                                <h2 className='text-[16px] font-medium font-poppins text-primary'>1</h2>
+                                <button className='border border-[#E5E7EB] rounded-full w-[24px] h-[24px] flex  bg-white justify-center items-center'><p className=''>+</p></button>
+                
+                              </div>
+                            </div>
+                              </div>
+
+
+
+
+                        
+                            </div>
+
+                          <div className=' flex  justify-between items-center'>
+
+                          <div className=' '>
+                            <h2 className='text-[16px] font-semibold font-poppins text-second'>$169.99</h2>
+                            <h2 className=' line-through text-[14px] flex justify-end font-medium font-poppins text-primary'>$199.99</h2>
+                          </div>
+                          </div>
+
+                          </div>
+                          <span className='inline-block w-[312px] lg:w-[618px] border border-[#E5E7EB]'></span>
+
+                                         <div className='pt-[24px] flex justify-between items-center'>
+                            <div className=' flex gap-[20px]'>
+                              <div>
+                                <img src={icon} alt="icon" />
+                              </div>
+                              <div>
+                                <h2 className='text-[16px] font-semibold font-poppins text-second'>Black Automatic Watch</h2>
+                                <p className='text-[14px] font-normal flex gap-[10px] items-center font-poppins text-primary'>
+                                  <Scaling />
+                                  
+                                   One size</p>
+                                   <div className='py-[38px] flex items-center justify-between'>
+                              <div className='w-[110px] bg-[#F8F8F8] flex justify-around py-[8px] px-[12px] rounded-full'>
+                                <button className=' border border-[#E5E7EB] rounded-full w-[24px] h-[24px] flex bg-white justify-center items-center '><p className=''>-</p></button>
+                                <h2 className='text-[16px] font-medium font-poppins text-primary'>1</h2>
+                                <button className='border border-[#E5E7EB] rounded-full w-[24px] h-[24px] flex  bg-white justify-center items-center'><p className=''>+</p></button>
+                
+                              </div>
+                            </div>
+                              </div>
+                            </div>
+                          <div className=' flex  justify-between items-center'>
+
+                          <div className=' '>
+                            <h2 className='text-[16px] font-semibold font-poppins text-second'>$169.99</h2>
+                            <p className=' line-through text-[14px] flex justify-end font-medium font-poppins text-primary'>$199.99</p>
+                          </div>
+                          </div>
+
+                          </div>
+
+                          <span className='inline-block w-[312px] lg:w-[618px] border border-[#E5E7EB]'></span>
+
+                          <div className='lg:hidden pt-[80px] pb-[24px]'><h2 className='text-[20px] font-semibold font-poppins text-second'>Confirm your order</h2></div>
+                            <div className='flex flex-col'>                
+                            <div className='flex flex-col  pt-[32px] pb-[16px]'>
+                              <div className='flex justify-between'>
+                                <p className='text-[16px] font-normal font-poppins text-primary'>Subtotal</p>
+                                <p className='text-[16px] font-normal font-poppins text-primary'>$169.99</p>
+                              </div>
+                                            <div className='flex justify-between py-[12px] lg:py-[8px]'>
+                                <p className='text-[16px] font-normal font-poppins text-primary'>Shipping estimate</p>
+                                <p className='text-[16px] font-normal font-poppins text-primary'>$5.00</p>
+                              </div>
+                              <div className='flex justify-between'>
+                                <p className='text-[16px] font-normal font-poppins text-primary'>Tax estimate</p>
+                                <p className='text-[16px] font-normal font-poppins text-primary'>$24.90</p>
+                              </div>
+                              
+                            </div>
+
+
+                            
+                              <div className='flex justify-between items-center pt-[16px] pb-[33px]'>
+                                <h2 className='text-[16px] font-semibold font-poppins text-second'>Order total</h2>
+                              <h2 className='text-[16px] font-semibold font-poppins text-second'>$199.89</h2>
+                              </div>
+                            </div>
+                        </div>
+                             <div className='lg:hidden pt-[80px]  lg:px-0 pb-[24px]'><h2 className='text-[20px] font-semibold font-poppins text-second'>Confirm your order</h2></div>
+                            <div className='flex flex-col lg:hidden '>                
+                            <div className='flex flex-col  pt-[32px] pb-[16px]'>
+                              <div className='flex justify-between'>
+                                <p className='text-[16px] font-normal font-poppins text-primary'>Subtotal</p>
+                                <p className='text-[16px] font-normal font-poppins text-primary'>$169.99</p>
+                              </div>
+                                            <div className='flex justify-between py-[12px] lg:py-[8px]'>
+                                <p className='text-[16px] font-normal font-poppins text-primary'>Shipping estimate</p>
+                                <p className='text-[16px] font-normal font-poppins text-primary'>$5.00</p>
+                              </div>
+                              <div className='flex justify-between'>
+                                <p className='text-[16px] font-normal font-poppins text-primary'>Tax estimate</p>
+                                <p className='text-[16px] font-normal font-poppins text-primary'>$24.90</p>
+                              </div>
+                              
+                            </div>
+
+
+                            
+                              <div className='flex justify-between items-center pt-[16px] pb-[33px]'>
+                                <h2 className='text-[16px] font-semibold font-poppins text-second'>Order total</h2>
+                              <h2 className='text-[16px] font-semibold font-poppins text-second'>$199.89</h2>
+                              </div>
+                            </div>
+
+
+                        <div className=' w-[312px]'>
+
+                                             <button className='  w-[312px] lg:w-[618px] bg-second hover:scale-[1.1] hover:bg-green-300 duration-[.4s] rounded-full'>
+
+                                <h2 className='py-[14px]  text-[16px] font-medium font-poppins text-white '>Confirm order</h2> </button>
+                        </div>
+
+
+              </div>
+            
+              </div>
+
+
+
+
+
+            </div>
+        </div>
+    </section>
+    
+
+    </>
+  )
+}
+
+export default CheckOut
