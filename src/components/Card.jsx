@@ -30,14 +30,8 @@ const totalPrice = cartProduct.reduce((sum , item)=>{
     return sum + item.price
 },0)
 
-
-
-
-
-
   return (
 
-      
       <>
 
       // -------------- card
@@ -69,12 +63,6 @@ const totalPrice = cartProduct.reduce((sum , item)=>{
                     ))
                 }
 
-
-
-
-           
-
-
                 </div>
 
 
@@ -94,6 +82,7 @@ const totalPrice = cartProduct.reduce((sum , item)=>{
 
 
         </div>
+        
 
 </>
 
