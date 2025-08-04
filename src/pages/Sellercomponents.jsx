@@ -30,7 +30,7 @@ axios.get('https://api.escuelajs.co/api/v1/products')
   return (
     <>
     
-    <section>
+    <section id='seller-components' className='dark:bg-primary'>
         <div className="container">
 
           <BreadCrum breadContent={' Sellercomponents'} breadLink={'/Sellercomponents'} />

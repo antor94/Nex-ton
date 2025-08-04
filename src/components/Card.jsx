@@ -21,20 +21,19 @@ const localIds = JSON.parse(localStorage.getItem('productID'))
   } , [])
 
 
-const cartProduct =  product.filter((item)=>{
-    return localIds.includes(item.id)
+const cartProduct =  product?.filter((item)=>{
+    return localIds?.includes(item.id)
 })
 
 
-const totalPrice = cartProduct.reduce((sum , item)=>{
+const totalPrice = cartProduct?.reduce((sum , item)=>{
     return sum + item.price
 },0)
 
   return (
 
       <>
-
-      // -------------- card
+{/* cart */}
 
   <div onClick={closeCart} className='w-full h-screen bg-[#d7cbcb60]  top-0 right-0 z-10 fixed'> 
 
@@ -49,7 +48,7 @@ const totalPrice = cartProduct.reduce((sum , item)=>{
                 <div className='AllProduct  h-[600px] mt-[40px] overflow-y-scroll'>
 
                 {
-                    cartProduct.map((item , i)=>(
+                    cartProduct?.map((item , i)=>(
          <div key={i} className='flex justify-between items-center mb-[20px] '>
                 <div className="proImg_name flex gap-[20px] items-center">
                     <div className="proimg w-[60px] h-[60px] bg-red-400 rounded-2xl overflow-hidden">

@@ -15,8 +15,7 @@ const Footer = () => {
   return (
     <>
 
-             <span className='w-full border border-[#E7E7E7] inline-block'></span>
-    <section className=' dark:bg-primary'>
+    <section className=' dark:bg-primary border-t-2'>
       <div className="container">
         <div className="footer_row py-[48px]  lg:py-[60px]">
 

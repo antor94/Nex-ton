@@ -5,10 +5,10 @@ import BreadCrum from "./BreadCrum";
 const Login = () => {
   return (
     <>
-      <section>
+      <section id="resigtation" className="dark:bg-primary">
         <div className="container">
           <BreadCrum  breadContent={'Register'}/>
-          <div className="login_row mt-[40px] lg:mb-[72px] px-[24px] lg:px-[548px]">
+          <div className="login_row mt-[40px] lg:pb-[72px] px-[24px] lg:px-[548px]">
             <div><h2 className="text-center text-[24px] lg:text-[36px] font-semibold font-poppins text-second dark:text-white">Register</h2> </div>
 
             <div className=" mt-[40px] lg:mt-[60px] mb-[24px]">

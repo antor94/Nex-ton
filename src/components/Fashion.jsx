@@ -6,7 +6,7 @@ const Fashion = () => {
   return (
     <>
 
-    <section id='fashion'  className='py-[52px] w-full hidden lg:block'>
+    <section id='fashion'  className='py-[52px] w-full hidden lg:block dark:bg-primary'>
       <div className="container">
         <div style={{background: `URL(${banner})`, backgroundRepeat: `no-repeat`, backgroundSize: `cover`,}} className="fashion_row py-[93px] pl-[120px]   rounded-[30px]">
           <div className='' >

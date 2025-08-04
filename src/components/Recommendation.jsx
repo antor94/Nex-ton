@@ -97,7 +97,7 @@ const handelShow = (data) =>{
 
   return (
     <>
-    <section className='py-[52px] lg:py-[88px]'>
+    <section className='py-[52px] lg:py-[88px] dark:bg-primary'>
         <div className="container">
             <CommonHead  headh2={'Recommendations.'} headp={'Best matching products for you'}/>
 

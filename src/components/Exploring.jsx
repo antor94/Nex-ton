@@ -56,7 +56,7 @@ const Exploring = () => {
   };
   return (
     <>
-      <section id="exploring" className=" lg:py-[40px] pt-[52px] pb-[40px] lg:pt-[88px] lg:mb-[32px]" >
+      <section id="exploring" className=" lg:py-[40px] pt-[52px] pb-[40px] dark:bg-primary lg:pt-[88px] " >
         <div className="container">
           {/* ------------- common-head */}
           <div className="  pb-[24px] lg:pb-[40px]"><CommonHead headh2={'Start exploring.'} headp={' Good things are waiting for you'} /></div>

@@ -16,7 +16,7 @@ const localIds = JSON.parse(localStorage.getItem('productID'))
 
   return (
     <>
-      <nav id="main_nav" className="py-[27px]  hidden lg:block">
+      <nav id="main_nav" className="py-[27px] dark:bg-primary  hidden lg:block">
         <div className="container">
           <div className="menu_row flex justify-between items-center">
           

@@ -5,7 +5,7 @@ const BreadCrum = ({breadLink , breadContent}) => {
   return (
     <>
 
-    <div className='bg-primary text-white p-[20px] '>
+    <div className= 'dark:bg-amber-300 bg-primary dark:text-black text-white p-[20px] '>
 
 <Link to={'/'}>Home </Link>
 

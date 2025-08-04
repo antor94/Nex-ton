@@ -8,7 +8,7 @@ import { RiMoneyDollarCircleLine } from "react-icons/ri";
 const Service = () => {
   return (
     <>
-      <section id="Service" className="pt-[52px] pb-[32px] px-[24px] ">
+      <section id="Service" className="pt-[52px] pb-[32px] px-[24px] dark:bg-primary ">
         <div className="container">
           <div className="text-base font-semibold font-poppins dark:text-white text-second lg:hidden mb-[24px]">
             <h2>Nexton® always with you</h2>
