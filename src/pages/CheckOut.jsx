@@ -1,18 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CommonHead from '../components/common/CommonHead'
 import { FaRegCircleUser } from "react-icons/fa6";
 import { BiGitMerge } from "react-icons/bi";
-import { FaEraser } from "react-icons/fa";
 import { AArrowDown, Armchair, Eraser, Scaling } from 'lucide-react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer'
-import ResNavbar from '../components/ResNavbar'
 import icon from '../assets/images/item-image.png'
 import BreadCrum from '../components/common/BreadCrum';
+import axios from 'axios';
 
 
 const CheckOut = () => {
 const [value , setValue ] = useState(1)
+
+const localIds = JSON.parse(localStorage.getItem('productID'))
+
+
+const [productQty , setProductQty] =useState(1)
+
 
 const increment = ()=>{ 
  setValue(value+1)
@@ -25,8 +28,58 @@ const decrement = ()=>{
 }
 
 
+// ---------------------api fatch
+
+
+  const [cartProduct , setCartProduct] = useState([])
+  
+  useEffect(()=>{
+    
+    axios.get('https://api.escuelajs.co/api/v1/products')
+    .then((res) => {
+   const cartData =   res.data.filter((item)=>{
+          return   localIds?.includes(item.id)
+      })
+
+      const withQty = cartData.map((item) =>{
+        return {...item , qty:1 , unitPrice: item.price}
+      })
+
+
+    setCartProduct(withQty)
+
+    })
+    .catch((err) => console.log(err));
+
+  } , [])
+
+
+
+  const handleAddQty = (data)=>{
+    setCartProduct((prev)=>(
+
+      prev.map((item)=>{
+        if(item.id != data) return item
+
+        const undateQty = item.qty +1
+        const updatePrice = item.unitPrice * undateQty
+
+        return {...item , qty:undateQty , price: updatePrice  }
+
+  })
+    ))
+  }
+
+
+  const totalPrice = cartProduct.reduce((sum , cartProduct)=>{
+    return sum + cartProduct.price
+  },0)
+
+
   return (
     <>
+
+
 
     <section id='checkout' className='dark:bg-primary'>
         <div className="container">
@@ -35,7 +88,7 @@ const decrement = ()=>{
 
 {/* ----------------------- responsive */}
 
-                      <div className='lg:hidden w-[312px]   '>
+                      <div className='lg:hidden w-[312px] '>
 
                         {/* -------------------------- product-details */}
 
@@ -100,8 +153,6 @@ const decrement = ()=>{
                           <span className='inline-block w-[312px] lg:w-[618px] border border-[#E5E7EB]'></span>
                         </div>
 
-
-
               <div className='pb-[52px]'><CommonHead headh2={'Checkout'} /></div>
 
 {/* --------------------- lg device */}
@@ -137,7 +188,7 @@ const decrement = ()=>{
     <input className='w-[123px] h-[43px] pl-[20px] lg:w-[282px] rounded-[12px]  dark:text-white       border border-[#E5E7EB] outline-none' type="text" name="" id="" />
   </div>
     <div className='flex flex-col  lg:pt-0 '>
-    <label className=' pb-[8px] text-[14px] lg:text-[16px] font-semibold font-poppins text-second'>Last name</label>
+    <label className=' pb-[8px] text-[14px] lg:text-[16px] dark:text-white font-semibold font-poppins text-second'>Last name</label>
     <input className='w-[123px] h-[43px] pl-[20px] lg:w-[282px] rounded-[12px]   dark:text-white      border border-[#E5E7EB] outline-none' type="text" name="" id="" />
   </div>
 </div>
@@ -220,69 +271,37 @@ const decrement = ()=>{
                 {/* ------------------ order summary */}
                         <div className=' hidden lg:block w-[312px]  lg:w-[618px]  px-[33px] lg:px-0 '>
                           <div><h2 className='text-[20px] lg:text-[24px]   dark:text-white    font-semibold font-poppins text-second'>Order summary</h2></div>
-             
 
-                          {/*---------------- 1st div details  */}
-                          <div className='pt-[24px] flex justify-between items-center'>
+                          {
+
+                          cartProduct.map((item) =>(
+                          <div key={item.id} className='pt-[24px] flex justify-between items-center'>
                             <div className=' flex gap-[20px]'>
-                              <div>
-                                <img src={icon} alt="icon" />
+                              <div className='w-[100px] rounded-[8px]'>
+                                <img className='rounded-[8px]' src={item.images[0]} alt="icon" />
                               </div>
                               <div>
-                                <h2 className='text-[16px] font-semibold font-poppins  dark:text-white     text-second'>Black Automatic Watch</h2>
-                                <p className='text-[14px] font-normal flex gap-[10px] font-poppins text-primary'><Scaling />One size</p>
+                                <h2 className='text-[16px] font-semibold font-poppins truncate w-[200px] dark:text-white     text-second'>{item.title}</h2>
+                                <p className='text-[14px] font-normal dark:text-white flex gap-[10px] font-poppins text-primary'><Scaling />One size</p>
                                    {/* ------------------ button */}
                                    <div className='py-[38px] flex items-center justify-between'>
                               <div className='w-[110px] bg-[#F8F8F8] flex justify-around py-[8px] px-[12px] rounded-full'>
-                                <button className=' border border-[#E5E7EB] rounded-full w-[24px] h-[24px] flex bg-white justify-center items-center '><p className=''>-</p></button>
-                                <h2 className='text-[16px] font-medium font-poppins text-primary'>1</h2>
-                                <button className='border border-[#E5E7EB] rounded-full w-[24px] h-[24px] flex  bg-white justify-center items-center'><p className=''>+</p></button>           
+                                <button className=' border border-[#E5E7EB] rounded-full w-[24px] h-[24px] flex bg-white justify-center items-center '>-</button>
+                                <h2 className='text-[16px] font-medium font-poppins text-primary'>{item.qty}</h2>
+                                <button onClick={()=>handleAddQty(item.id )} className='border border-[#E5E7EB] rounded-full w-[24px] h-[24px] flex  bg-white justify-center items-center'>+</button>           
                               </div>
                             </div>
                               </div>         
                             </div>
                           <div className=' flex  justify-between items-center'>
                           <div className=' '>
-                            <h2 className='text-[16px] font-semibold  dark:text-white   font-poppins text-second'>$169.99</h2>
+                            <h2 className='text-[16px] font-semibold  dark:text-white   font-poppins text-second'>$ {item.price}</h2>
                             <h2 className=' line-through text-[14px]  dark:text-white   flex justify-end font-medium font-poppins text-primary'>$199.99</h2>
                           </div>
                           </div>
-
                           </div>
-
-{/* ----------------------- 2nd div details */}
-                            <div className='pt-[24px] flex justify-between items-center'>
-                            <div className=' flex gap-[20px]'>
-                              <div>
-                                <img src={icon} alt="icon" />
-                              </div>
-                              <div>
-                                <h2 className='text-[16px] font-semibold  dark:text-white   font-poppins text-second'>Black Automatic Watch</h2>
-                                <p className='text-[14px] font-normal  dark:text-white   flex gap-[10px] items-center font-poppins text-primary'>
-                                  <Scaling />
-                                  
-                                   One size</p>
-                                   <div className='py-[38px] flex items-center justify-between'>
-                              <div className='w-[110px] bg-[#F8F8F8] flex justify-around py-[8px] px-[12px] rounded-full'>
-                                <button className=' border border-[#E5E7EB] rounded-full w-[24px] h-[24px] flex bg-white justify-center items-center '><p className=''>-</p></button>
-                                <h2 className='text-[16px] font-medium font-poppins text-primary'>1</h2>
-                                <button className='border border-[#E5E7EB] rounded-full w-[24px] h-[24px] flex  bg-white justify-center items-center'><p className=''>+</p></button>
-                
-                              </div>
-                            </div>
-                              </div>
-                            </div>
-                          <div className=' flex  justify-between items-center'>
-
-                          <div className=' '>
-                            <h2 className='text-[16px] font-semibold  dark:text-white   font-poppins text-second'>$169.99</h2>
-                            <p className=' line-through text-[14px]  dark:text-white   flex justify-end font-medium font-poppins text-primary'>$199.99</p>
-                          </div>
-                          </div>
-
-                          </div>
-
-                 
+                            ))
+                          }            
 {/* ---------------------- res button */}
                           <button className='lg:hidden pt-[80px] pb-[24px] text-[20px] font-semibold   dark:text-white  font-poppins text-second'>Confirm your order</button>
                        
@@ -291,7 +310,7 @@ const decrement = ()=>{
                             <div className='flex flex-col  pt-[32px] pb-[16px]'>
                               <div className='flex justify-between'>
                                 <p className='text-[16px] font-normal  dark:text-white   font-poppins text-primary'>Subtotal</p>
-                                <p className='text-[16px] font-normal  dark:text-white   font-poppins text-primary'>$169.99</p>
+                                <p className='text-[16px] font-normal  dark:text-white   font-poppins text-primary'>$ {totalPrice}</p>
                               </div>
                                             <div className='flex justify-between py-[12px] lg:py-[8px]'>
                                 <p className='text-[16px] font-normal  dark:text-white   font-poppins text-primary'>Shipping estimate</p>
@@ -304,11 +323,11 @@ const decrement = ()=>{
                             </div>   
                               <div className='flex justify-between items-center pt-[16px] pb-[33px]'>
                                 <h2 className='text-[16px] font-semibold  dark:text-white   font-poppins text-second'>Order total</h2>
-                              <h2 className='text-[16px] font-semibold  dark:text-white   font-poppins text-second'>$199.89</h2>
+                              <h2 className='text-[16px] font-semibold  dark:text-white   font-poppins text-second'>$ {totalPrice + 5 + 24.98} </h2>
                               </div>
                             </div>
                         </div>
-                             <div className='lg:hidden pt-[80px]  lg:px-0 pb-[24px]'><h2 className='text-[20px]  dark:text-white   font-semibold font-poppins text-second'>Confirm your order</h2></div>
+                             <button className='lg:hidden pt-[80px]  lg:px-0 pb-[24px] text-[20px]  dark:text-white   font-semibold font-poppins text-second'>Confirm your order</button>
                           
                           {/*--------------- res subtotal  */}
                             <div className='flex flex-col lg:hidden '>                
