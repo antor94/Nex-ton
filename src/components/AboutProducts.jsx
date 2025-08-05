@@ -41,7 +41,7 @@ useEffect(() => {
   }
 }, [perams.id]);
 
-console.log(product)
+
 
 // ---------------------- recomended product
 
@@ -180,8 +180,8 @@ useEffect(() => {
         <div className="container">
             <div className="product_row lg:pl-0 px-[30px]">
                 <div className='pb-[40px] lg:pb-[60px]'>
-                    <h1 className='text-[20px] lg:text-[36px] dark:text-white     font-semibold hidden lg:inline-block font-poppins text-second'>{product.title}<span className='text-[20px] inline-block lg:hidden  font-semibold font-poppins text-second'> About this product</span></h1>
-                    <p className='w-[310px] lg:w-[735px]  dark:text-white    text-[14px] lg:text-[16px] font-normal font-poppins  text-primary pt-[4px] '>{product.description}</p>
+                    <h1 className='text-[20px] lg:text-[36px] dark:text-white     font-semibold hidden lg:inline-block font-poppins text-second'><span className='text-[20px] inline-block lg:hidden  font-semibold font-poppins text-second'> About this product</span></h1>
+                    <p className='w-[310px] lg:w-[735px]  dark:text-white    text-[14px] lg:text-[16px] font-normal font-poppins  text-primary pt-[4px] '></p>
                 </div>
                 {/* ----------------- cart details */}
                 <div className='pb-[40px] lg:pb-[60px]'>

@@ -74,13 +74,7 @@ const Recommendation = () => {
 
 const handlebutton = (productInfo) => {
   navigate(`/AboutProducts/${productInfo.id}`, 
-    // ------------ slider-items
-    {
-    state: {
-      product: productInfo,
-      selectedImage: productInfo.images[0]
-    }
-  });
+);
 };
 
 // ---------------- store application
