@@ -7,7 +7,6 @@ import { PiShoppingCart } from "react-icons/pi";
 const ResNavbar = () => {
   const [showNav, setShownav] = useState(false);
 
-  console.log(showNav);
 
   return (
     <>
