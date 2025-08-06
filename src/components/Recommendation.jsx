@@ -74,10 +74,7 @@ const Recommendation = () => {
 
 const handlebutton = (productInfo) => {
   navigate(`/AboutProducts/${productInfo.id}`, 
-<<<<<<< HEAD
 
-=======
->>>>>>> 17e57a6daf82d5aa35d841b468e337e02fa3ac3e
 );
 };
 
