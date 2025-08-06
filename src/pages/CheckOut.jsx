@@ -83,7 +83,7 @@ const decrement = ()=>{
 
     <section id='checkout' className='dark:bg-primary'>
         <div className="container">
-          <BreadCrum breadContent={'Checkout'} />
+       
             <div className="checkout_row pt-[40px] px-[30px]  lg:px-0">
 
 {/* ----------------------- responsive */}
@@ -153,7 +153,8 @@ const decrement = ()=>{
                           <span className='inline-block w-[312px] lg:w-[618px] border border-[#E5E7EB]'></span>
                         </div>
 
-              <div className='pb-[52px]'><CommonHead headh2={'Checkout'} /></div>
+              <div className='pt-[30px] lg:pt-0'><CommonHead headh2={'Checkout'} /></div>
+                 <BreadCrum breadContent={' Checkout'} />
 
 {/* --------------------- lg device */}
                 <div className=' lg:flex lg:justify-between'> 

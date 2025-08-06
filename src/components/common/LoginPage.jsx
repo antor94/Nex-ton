@@ -1,27 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../Navbar";
 import { Link } from "react-router";
 import BreadCrum from "./BreadCrum";
+import { IoEyeOutline } from "react-icons/io5";
+import { FaRegEyeSlash } from "react-icons/fa";
+
+
 
 const LoginPage = () => {
+
+const [formData , setFormData] = useState({email:'' , emailError: '' , password:'' , passwordError:'' })
+
+
+const handleLogin =()=>{
+  e.preventDefault()
+  setFormData({email:"demoEmail" , emailError:"this is error" , password:"demopassword" , passwordError:'demo Pass Error'})
+}
+
+
   return (
     <>
       <section id="resigtation" className="dark:bg-primary">
         <div className="container">
           <BreadCrum  breadContent={'Login'} breadLink={'/Login'}/>
-          <div className="login_row mt-[40px] lg:pb-[72px] px-[24px] lg:px-[548px]">
-            <div><h2 className="text-center text-[24px] lg:text-[36px] font-semibold font-poppins text-second dark:text-white">Login</h2> </div>
+            <div className="mt-[40px]"><h2 className="text-center text-[24px] lg:text-[36px] font-semibold font-poppins text-second dark:text-white">Login</h2> </div>
+          <form onSubmit={handleLogin} className="login_row mt-[40px] pb-[72px] px-[24px] lg:flex justify-center ">
+            <div>
 
+{/* ----------------------------- email */}
             <div className=" mt-[40px] lg:mt-[60px] mb-[24px]">
+         
               <h2 className="text-[16px] font-semibold font-poppins text-second dark:text-white mb-[8px] ">Email</h2>       
-               <input className="w-[312px] lg:w-[440px] border border-[#E5E7EB] rounded-[12px] py-[12px] pl-[16px] text-[14px] font-normal font-poppins dark:text-yellow-300 text-[#4B5563] outline-none" type="text" placeholder="example@example.com" />
-               
+               <input  onChange={(e) => {setEmail(e.target.value) , setEmailError("") }}  className={`w-[312px] lg:w-[440px] border border-[#E5E7EB] rounded-[12px] py-[12px] pl-[16px] text-[14px] font-normal font-poppins dark:text-yellow-300 text-[#4B5563] outline-none`} type="text" placeholder="example@example.com" />
                 </div>
-
-                            <div className="mb-[24px]">
+{/* ---------------------- password */}
+                            <div className="mb-[24px] relative">
               <h2 className="text-[16px] font-semibold font-poppins text-second dark:text-white mb-[8px] ">Password</h2>       
-               <input className="w-[312px] lg:w-[440px] border border-[#E5E7EB] rounded-[12px] py-[12px] pl-[16px] text-[14px] font-normal font-poppins dark:text-yellow-300 text-[#4B5563] outline-none" type="password" placeholder="" />
-               
+               <input className="w-[312px] lg:w-[440px] border border-[#E5E7EB] rounded-[12px] py-[12px] pl-[16px] text-[14px]
+                font-normal font-poppins dark:text-yellow-300 text-[#4B5563] outline-none"  type='password' />
+             
                 </div>
 
 
@@ -35,9 +52,10 @@ const LoginPage = () => {
                 <h2 className="text-[16px] font-normal font-poppins text-[#4B5563] dark:text-white">New user? <Link to='/Resigter' className="text-[#0EA5E9]">Create an account</Link></h2>
                </div>
 
+            </div>
 
 
-          </div>
+          </form>
         </div>
       </section>
     </>

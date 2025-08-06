@@ -36,17 +36,15 @@ const Sellercomponents = ({
             breadContent={" Sellercomponents"}
             breadLink={"/Sellercomponents"}
           />
-          <div className="seller_row">
-            <div className="mt-10 mb-16 flex flex-col lg:flex-row lg:gap-[44px] ml-4 lg:ml-[24px]">
+          <div id="seller_row" className="pb-[72px]">
+            <div className="mt-10 flex flex-col lg:flex-row lg:gap-[44px] ml-4 lg:ml-[24px]">
               {/* Sidebar/filter section for all screens, horizontal on mobile, vertical on desktop */}
               <div className="w-full lg:w-auto mb-8 lg:mb-0">
                 {/* --------------- category */}
                 <div className="hidden lg:block mb-8">
-                  <div>
-                    <h2 className="text-[18px] font-semibold font-poppins text-second dark:text-white">
-                      Categories
-                    </h2>
-                  </div>
+
+                  {/* ------------ catagory */}
+                  <div><h2 className="text-[18px] font-semibold font-poppins text-second dark:text-white"> Categories </h2> </div>
 
                   <div className=" mt-[24px] flex gap-[12px] mb-[16px]">
                     <button className="w-[20px] h-[20px] border border-[#94A3B8]  rounded-[4px] "></button>

@@ -5,13 +5,13 @@ const BreadCrum = ({breadLink , breadContent}) => {
   return (
     <>
 
-    <div className= 'dark:bg-amber-300 bg-primary dark:text-black text-white p-[20px] '>
+    <div className= 'pb-[20px]'>
 
-<Link to={'/'}>Home </Link>
+<Link className='text-[16px] font-medium font-poppins dark:text-white' to={'/'}>Home </Link>
 
 /
 
-<Link to={breadLink}>{breadContent}</Link>
+<Link className='text-[16px] font-medium font-poppins dark:text-white' to={breadLink}>{ breadContent}</Link>
 
     </div>
 

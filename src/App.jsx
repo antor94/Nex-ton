@@ -10,7 +10,7 @@ import Login from './pages/Login'
 import Resigter from './pages/Resigter'
 import CheckOut from './pages/CheckOut'
 import AboutProducts from './components/AboutProducts'
-
+  import { ToastContainer } from 'react-toastify';
   
 const App = () => {
 
@@ -32,7 +32,7 @@ const App = () => {
 
   return (
     <>
-
+  <ToastContainer />
     <RouterProvider router={myRouter} />
     
     </>

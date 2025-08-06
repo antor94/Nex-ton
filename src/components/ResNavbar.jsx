@@ -55,7 +55,7 @@ const ResNavbar = () => {
               <ul className="flex flex-col items-center gap-5 text-[16px] font-poppins font-normal text-white ">
                 <li>
                   <Link
-                    to={"/"}
+                    to='./Login'
                     className="flex justify-center items-center gap-2"
                   >
                     profile <RiUserLine className="text-2xl" />
@@ -67,7 +67,7 @@ const ResNavbar = () => {
                     to={"/"}
                     className="flex justify-center items-center gap-2"
                   >
-                    cart <PiShoppingCart className="text-2xl" />{" "}
+                    cart <PiShoppingCart className="text-2xl" />
                     <span
                       className="w-[20px] h-[20px] rounded-full bg-[#0EA5E9] text-[12px] font-normal font-poppins text-[#fff] flex  justify-center
            items-center absolute top-[250px] left-[122px]"

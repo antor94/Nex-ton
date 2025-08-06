@@ -6,7 +6,7 @@ import SellerCard from './common/SellerCard'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaStar } from "react-icons/fa";
-import { useLocation, useParams } from 'react-router'
+
 import BreadCrum from './common/BreadCrum'
 
 
@@ -14,34 +14,13 @@ const AboutProducts = () => {
 
 // ----------------slider item
   
-  const { state } = useLocation();
-  const { product, selectedImage } = state || {};
-
-  const [images, setImages] = useState(product?.images || []);
-  const [currentImage, setCurrentImage] = useState(selectedImage || '');
-
-  useEffect(() => {
-    if (selectedImage) {
-      setCurrentImage(selectedImage);
-    }
-  }, [selectedImage]);
 
 // ----------------slider item
 
   
   // ------------- perams
 
-  const perams = useParams()
 
-useEffect(() => {
-  if (perams.id) {
-    axios.get(`https://api.escuelajs.co/api/v1/products/${perams.productId}`)
-      .then((res) => selectedImage(res.data))
-      .catch((err) => console.error(err));
-  }
-}, [perams.id]);
-
-console.log(product)
 
 // ---------------------- recomended product
 
@@ -52,7 +31,6 @@ useEffect(() => {
     .then(res => setRecommendedProducts(res.data))
     .catch(err => console.error("Error fetching recommended products:", err));
 }, []);
-
 
   return (
     <>
@@ -66,54 +44,29 @@ useEffect(() => {
 
         {/*-------------------  slider */}
 
- <div className=" flex ">
-      <div className=" lg:flex lg:flex-col  w-2/12 space-y-2 cursor-pointer">
-        {images.map((imgSrc, i) => (
-          <img 
-            key={i} 
-            src={imgSrc} 
-            alt={`Thumbnail ${i}`} 
-            className={`w-[600px] object-contain ${currentImage===imgSrc ? 'border-2 border-blue-500' : ''}`} 
-            onClick={() => setCurrentImage(imgSrc)} 
-          />
-        ))}
-      </div>
 
-      <div className="flex-1  mr-[32px] ml-6">
-        <img 
-          src={currentImage} 
-          alt="Product Preview" 
-          className="w-[500px] object-contain" 
-        />
-      </div>
-    </div>
 
 {/* --------------------- responsive-produtCard */}
 
-        <div className='w-[460px] h-[530px] lg:border lg:border-[#E5E7EB] rounded-[16px] py-[33px] px-[33px] '>
-          <div className='pb-[33px] flex  justify-between items-center'>
-           <div className='lg:hidden'><h2 className='text-[24px] truncate w-[300px]  dark:text-white    lg:text-[36px] font-semibold font-poppins text-second'>{product.title}</h2>
+        <div className='w-[460px] h-[463px] lg:border lg:border-[#E5E7EB] rounded-[16px] px-[33px] '>
+          <div className=' flex  justify-between items-center'>
+     
+     {/* ----------------- responsive details */}
+           <div className='lg:hidden'><h2 className='text-[24px] truncate w-[300px]  dark:text-white    lg:text-[36px] font-semibold font-poppins text-second'>gsfgdf</h2>
           <div className='lg:hidden mt-[20px] mb-[24px] '>
-            <h2 className='text-[24px] font-semibold font-poppins  dark:text-white    text-second'>{product.price} $</h2>
+            <h2 className='text-[24px] font-semibold font-poppins  dark:text-white    text-second'> $</h2>
             <h2 className=' line-through text-[14px] flex  font-medium font-poppins  dark:text-white    text-primary'>$79.00</h2>
           </div>
            <div className='flex justify-between gap-[5px]'>
               <div className='flex items-center gap-[5px]'>
             <FaStar className='text-yellow-500' />
-            <h2 className='text-[12px] font-normal font-poppins  dark:text-white    text-primary'>4.9 (98)</h2>
+            <h2 className='text-[12px] font-normal font-poppins  dark:text-white text-primary'>4.9 (98)</h2>
               </div>
             </div>
             </div>
 
-{/* ---------------------- product price */}
-
-            <div className='hidden lg:hidden'>
-            <h2 className='text-[24px] font-semibold font-poppins  dark:text-white    text-second'>$ {product.price}</h2>
-            <h2 className=' line-through text-[14px] flex  dark:text-white    justify-end font-medium font-poppins text-primary'>$199.99</h2>
-          </div>
-
-{/* ------------------------ review-part  */}
-            <div className='hidden  lg:flex justify-between gap-[5px]'>
+{/* ----------------------- rating + review */}
+            <div className='py-[33px]   hidden   lg:flex justify-between gap-[5px]'>
               <div className='flex items-center gap-[5px]'>
             <FaStar className='text-yellow-500' />
             <h2 className='text-[16px] font-semibold  dark:text-white    font-poppins text-second'>4.9</h2>
@@ -123,15 +76,15 @@ useEffect(() => {
             </div>
 {/* --------------------- price */}
           <div className='hidden lg:inline-block'>
-            <h2 className='text-[24px] font-semibold  dark:text-white    font-poppins text-second'>$ {product.price}</h2>
+            <h2 className='text-[24px] font-semibold  dark:text-white    font-poppins text-second'>$</h2>
             <h2 className=' line-through text-[14px]  dark:text-white    font-medium font-poppins text-primary'>$199.99</h2>
           </div>
           </div>
 
-          {/* -------------------------- size */}
+{/* ------------------ size details */}
           <div>
             <h2 className='text-[16px] font-semibold font-poppins  dark:text-white    text-second'>Size: S</h2>
-            <div className=' flex flex-wrap gap-[10px] pt-[12px]'>
+            <div className=' flex  gap-[10px] pt-[12px]'>
             <button className='flex w-[72px] py-[10px] px-[31px] border  dark:text-white    border-[#E5E7EB] rounded-[12px] hover:text-white  hover:bg-[#0EA5E9] text-[16px] font-semibold font-poppins text-primary'>S</button>
             <button className='flex w-[72px] py-[10px] px-[31px] border  dark:text-white    border-[#E5E7EB] rounded-[12px] hover:text-white hover:bg-[#0EA5E9]  justify-center items-center text-[16px] font-semibold font-poppins text-primary'>M</button>
             <button className='flex w-[72px] py-[10px] px-[31px] border  dark:text-white    border-[#E5E7EB] rounded-[12px] hover:text-white hover:bg-[#0EA5E9]  justify-center items-center text-[16px] font-semibold font-poppins text-primary '> L</button>
@@ -140,7 +93,7 @@ useEffect(() => {
           </div>
             </div>
 
-{/* --------------------------- price range ++ button */}
+{/* ------------------- button */}
             <div className='py-[38px] flex items-center gap-[50px] lg:justify-between'>
               <div className='w-[110px] bg-[#F8F8F8] flex justify-around py-[8px] px-[12px] rounded-full'>
                 <button className=' border border-[#E5E7EB] rounded-full w-[24px] h-[24px] flex bg-white justify-center items-center '>-</button>
@@ -151,6 +104,7 @@ useEffect(() => {
               <button className=' lg:w-[178px] bg-black hover:scale-[1.1] hover:bg-green-300 duration-[.4s] rounded-full'><h2 className='py-[14px] px-[32px] text-[16px] font-medium font-poppins text-white '>Add to cart</h2> </button>
             </div>
 {/* ------------------- sub-total */}
+
             <div className=' hidden lg:block'>
             <div className='flex justify-between items-center gap-[10px] pt-[32px] pb-[16px]'>
               <div>
@@ -168,6 +122,8 @@ useEffect(() => {
               </div>
             </div>
         </div>
+
+        
       </div>
     </div>
   </div>
@@ -180,8 +136,8 @@ useEffect(() => {
         <div className="container">
             <div className="product_row lg:pl-0 px-[30px]">
                 <div className='pb-[40px] lg:pb-[60px]'>
-                    <h1 className='text-[20px] lg:text-[36px] dark:text-white     font-semibold hidden lg:inline-block font-poppins text-second'>{product.title}<span className='text-[20px] inline-block lg:hidden  font-semibold font-poppins text-second'> About this product</span></h1>
-                    <p className='w-[310px] lg:w-[735px]  dark:text-white    text-[14px] lg:text-[16px] font-normal font-poppins  text-primary pt-[4px] '>{product.description}</p>
+                    <h1 className='text-[20px] lg:text-[36px] dark:text-white     font-semibold hidden lg:inline-block font-poppins text-second'><span className='text-[20px] inline-block lg:hidden  font-semibold font-poppins text-second'> About this product</span></h1>
+                    <p className='w-[310px] lg:w-[735px]  dark:text-white    text-[14px] lg:text-[16px] font-normal font-poppins  text-primary pt-[4px] '></p>
                 </div>
                 {/* ----------------- cart details */}
                 <div className='pb-[40px] lg:pb-[60px]'>
@@ -219,23 +175,7 @@ useEffect(() => {
     </section>
 
 {/* --------------------- recommendation */}
-    <section className='dark:bg-primary'>
-        <div className="container">
-            <CommonHead  headh2={'Recommendations '} headp={'products'}/>
- <div className="seller_row   lg:flex lg:justify-between lg:flex-wrap mt-10">
 
-                          {
-                Array.isArray(recommendedProducts) && recommendedProducts.slice(0,4).map((item , i)=>(
-
-                     <SellerCard key={i} sellerImg={item.images} Sellerh2={item.title} sellerP={item.price} sellerText={item.category.slug}  />
-                
-                ))
-              }
-                
-            </div>
-        </div>
-    </section>
-    
     </>
   )
 }

@@ -18,7 +18,7 @@ const Home = () => {
   <Service/>
 <Exploring />
 <Recommendation />
-{/* <Sellers /> */}
+<Sellers />
 <Fashion />
   
   </>

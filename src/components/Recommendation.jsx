@@ -74,13 +74,8 @@ const Recommendation = () => {
 
 const handlebutton = (productInfo) => {
   navigate(`/AboutProducts/${productInfo.id}`, 
-    // ------------ slider-items
-    {
-    state: {
-      product: productInfo,
-      selectedImage: productInfo.images[0]
-    }
-  });
+
+);
 };
 
 // ---------------- store application
@@ -106,10 +101,11 @@ const handelShow = (data) =>{
 <div className="slider-container pt-[40px]">
                 <Slider {...settings}>
                     {
-                      product.slice(0,10) .map((item,i)=>(
+                      product.slice(0,10).map((item,i)=>(
                         <SellerCard certClick={()=>handelShow(item.id)} showDatails = { ()=> handlebutton (item) } key={i} sellerImg={item.images} Sellerh2={item.title} sellerP={item.price} sellerText={item.category.slug}  />
                       ))
                     }  
+                                
                 </Slider>
             </div>
 
