@@ -21,6 +21,18 @@ const AboutProducts = () => {
   // ------------- perams
 
 
+<<<<<<< HEAD
+=======
+useEffect(() => {
+  if (perams.id) {
+    axios.get(`https://api.escuelajs.co/api/v1/products/${perams.productId}`)
+      .then((res) => selectedImage(res.data))
+      .catch((err) => console.error(err));
+  }
+}, [perams.id]);
+
+
+>>>>>>> 17e57a6daf82d5aa35d841b468e337e02fa3ac3e
 
 // ---------------------- recomended product
 
