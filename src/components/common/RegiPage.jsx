@@ -23,6 +23,8 @@ const Login = () => {
 
 const [showPass , setShowPass] = useState(false)
 
+
+// --------------- loding
 const [loading , setloading] = useState(false)
 
 
@@ -91,7 +93,6 @@ transition: Bounce,
                 <h2 className="text-[16px] font-semibold font-poppins text-second dark:text-white mb-[8px] ">  Email</h2>   
             <input onChange={(e) => {setEmail(e.target.value) , setEmailError("") }}  className={`w-[312px] lg:w-[440px]  border rounded-[12px] py-[12px] pl-[16px] text-[14px] font-normal font-poppins dark:text-yellow-300 text-[#4B5563] outline-none`}  type="email" placeholder="example@example.com"   />
               </div>
-
               {/* ----------------------- password */}
               <div className="mb-[24px] relative">
                  <p className="text-[12px]  font-medium font-poppins text-red-500"> {passwordError}  </p>
@@ -110,11 +111,7 @@ transition: Bounce,
                     <IoEyeOutline onClick={()=> setShowPass(!showPass)} className="text-[20px] dark:text-white absolute top-11 right-5" />  
                     
                   }
-                  
-
-
                    </div>
-
               {/* ---------------------- again password */}
               <div className="mb-[24px] relative">
                 <h2 className="text-[16px] font-semibold font-poppins text-second dark:text-white mb-[8px] ">
@@ -130,14 +127,8 @@ transition: Bounce,
                     :
                     <IoEyeOutline onClick={()=> setShowPass(!showPass)} className="text-[20px] dark:text-white absolute top-11 right-5" />  
                     
-                  }
-             
+                  }         
               </div>
-
-
-
-
-
               {/* ------------------- submit */}
               <div className="flex flex-col">
                 {
@@ -159,12 +150,8 @@ transition: Bounce,
                 Continue
               </button>
                 }
-
-
-
               </div>
-              
-
+   {/* ----------------- or */}
               <div className="w-[312px] lg:w-[440px] flex items-center ">
                 <span className="w-[174px] h-[1.6px] border border-[#F3F4F6] inline-block"></span>
                 <p className="w-[36px] lg:px-[51px] text-[14px] font-medium font-poppins text-primary dark:text-white">

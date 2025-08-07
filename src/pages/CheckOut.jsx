@@ -35,9 +35,9 @@ const decrement = ()=>{
   
   useEffect(()=>{
     
-    axios.get('https://api.escuelajs.co/api/v1/products')
+    axios.get('https://api.jsonbin.io/v3/b/68934a4bf7e7a370d1f547b6')
     .then((res) => {
-   const cartData =   res.data.filter((item)=>{
+   const cartData =   res.data.record.filter((item)=>{
           return   localIds?.includes(item.id)
       })
 

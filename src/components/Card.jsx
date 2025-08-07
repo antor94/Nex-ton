@@ -13,8 +13,8 @@ const Card = ({ closeCart }) => {
 
   useEffect(() => {
     axios
-      .get("https://api.escuelajs.co/api/v1/products")
-      .then((res) => setProduct(res.data))
+      .get("https://api.jsonbin.io/v3/b/68934a4bf7e7a370d1f547b6")
+      .then((res) => setProduct(res.data.record))
       .catch((err) => console.log(err));
   }, []);
 
@@ -44,15 +44,15 @@ const Card = ({ closeCart }) => {
          
             {
             cartProduct?.map((item, i) => (
-              <div  key={i} className="flex flex-wrap justify-between items-center mb-4 sm:mb-[20px]"   >
+              <div  key={i} className="flex flex-wrap justify-between items-center mb-4 ">
                 <div className="proImg_name flex gap-2 sm:gap-[20px] items-center w-2/3 sm:w-auto">
                    <button><MdDeleteOutline className="text-[35px]" /></button>
                   <div className="proimg w-[48px] h-[48px] sm:w-[60px] sm:h-[60px] bg-red-400 rounded-2xl overflow-hidden flex-shrink-0">
                     <img    src={item.images}   alt="product-Img"  className="w-full h-full object-cover" />
                   </div>
-                  <h2 className="text-[14px] sm:text-[16px] truncate w-[100px] sm:w-[200px] font-poppins font-bold text-primary">{item.title} </h2>
+                  <h2 className="text-[14px] sm:text-[16px] truncate w-[200px] sm:w-[200px] font-poppins font-bold text-primary">{item.name} </h2>
                 </div>
-                <p className="text-[13px] sm:text-[14px] font-medium font-poppins text-second mt-2 sm:mt-0"> {item.price} $ </p>
+                <p className="text-[13px] sm:text-[14px] font-medium font-poppins text-second mt-2 sm:mt-0"> {item.price}  </p>
               </div>
             ))
             

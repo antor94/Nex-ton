@@ -1,33 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import logo from '../assets/images/svg.png'
-import CommonHead from './common/CommonHead'
 import axios from 'axios'
-import SellerCard from './common/SellerCard'
 import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import { FaStar } from "react-icons/fa";
-
 import BreadCrum from './common/BreadCrum'
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick-theme.css";
+import sliderimg1 from '../assets/images/slider1.png'
+import sliderimg2 from '../assets/images/slider2.png'
+import sliderimg3 from '../assets/images/slider3.png'
+import sliderimg4 from '../assets/images/slider4.png'
+
 
 
 const AboutProducts = () => {
 
 // ----------------slider item
   
-
-// ----------------slider item
-
-  
-  // ------------- perams
+const [images , setImages] = useState('')
 
 
-useEffect(() => {
-  if (perams.id) {
-    axios.get(`https://api.escuelajs.co/api/v1/products/${perams.productId}`)
-      .then((res) => selectedImage(res.data))
-      .catch((err) => console.error(err));
-  }
-}, [perams.id]);
+// ---------------- store application
 
 
 
@@ -36,7 +29,7 @@ useEffect(() => {
 const [recommendedProducts, setRecommendedProducts] = useState([]);
 
 useEffect(() => {
-  axios.get('https://api.escuelajs.co/api/v1/products?limit=12')
+  axios.get('https://dummyjson.com/products')
     .then(res => setRecommendedProducts(res.data))
     .catch(err => console.error("Error fetching recommended products:", err));
 }, []);
@@ -52,8 +45,16 @@ useEffect(() => {
       <div className=' lg:flex justify-between' >
 
         {/*-------------------  slider */}
+<div className='flex gap-[30px]'>
 
+<div className='flex flex-col gap-[20px]'>
+  <div className='slider1 w-[100px] h-[100px] bg-red-500  rounded-[6px]'></div>
+  <div className='slider2 w-[100px] h-[100px] bg-red-500  rounded-[6px]'></div>
+  <div className='slider3 w-[100px] h-[100px] bg-red-500  rounded-[6px]'></div>
+</div>
+  <div className='main-img w-[500px] h-[500px] bg-green-400 rounded-[7px]'></div>
 
+</div>
 
 {/* --------------------- responsive-produtCard */}
 

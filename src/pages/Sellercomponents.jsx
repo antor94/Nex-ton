@@ -19,8 +19,8 @@ const Sellercomponents = ({
 
   useEffect(() => {
     axios
-      .get("https://api.escuelajs.co/api/v1/products")
-      .then((res) => setProducts(res.data))
+      .get("https://api.jsonbin.io/v3/b/68934a4bf7e7a370d1f547b6")
+      .then((res) => setProducts(res.data.record))
       .catch((err) => console.log(err));
   }, []);
 
@@ -178,10 +178,13 @@ const Sellercomponents = ({
                   {currentItems.map((item, i) => (
                     <SellerCard
                       key={i}
-                      sellerImg={item.images}
-                      Sellerh2={item.title}
+                      sellerImg={item.imagesList}
+                      Sellerh2={item.name}
                       sellerP={item.price}
-                      sellerText={item.category.slug}
+                      sellerText={item.category}
+                      sellerFont={item.discountPercentage}
+                      sellerdis={item.rating}
+                      seelerstock={item.stock}
                     />
                   ))}
                 </div>
