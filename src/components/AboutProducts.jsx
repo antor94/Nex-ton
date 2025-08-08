@@ -4,23 +4,14 @@ import axios from 'axios'
 import "slick-carousel/slick/slick.css";
 import { FaStar } from "react-icons/fa";
 import BreadCrum from './common/BreadCrum'
-import Slider from 'react-slick';
 import "slick-carousel/slick/slick-theme.css";
-import sliderimg1 from '../assets/images/slider1.png'
-import sliderimg2 from '../assets/images/slider2.png'
-import sliderimg3 from '../assets/images/slider3.png'
-import sliderimg4 from '../assets/images/slider4.png'
-
-
+import { useParams } from 'react-router';
 
 const AboutProducts = () => {
 
-// ----------------slider item
-  
-const [images , setImages] = useState('')
 
+const perams = useParams()
 
-// ---------------- store application
 
 
 
@@ -29,8 +20,8 @@ const [images , setImages] = useState('')
 const [recommendedProducts, setRecommendedProducts] = useState([]);
 
 useEffect(() => {
-  axios.get('https://dummyjson.com/products')
-    .then(res => setRecommendedProducts(res.data))
+  axios.get(`https://dummyjson.com/products/${perams.productId}`)
+    .then(res => setRecommendedProducts(res.data.products))
     .catch(err => console.error("Error fetching recommended products:", err));
 }, []);
 
@@ -45,14 +36,14 @@ useEffect(() => {
       <div className=' lg:flex justify-between' >
 
         {/*-------------------  slider */}
-<div className='flex gap-[30px]'>
+<div className='flex  gap-[30px]'>
 
-<div className='flex flex-col gap-[20px]'>
-  <div className='slider1 w-[100px] h-[100px] bg-red-500  rounded-[6px]'></div>
-  <div className='slider2 w-[100px] h-[100px] bg-red-500  rounded-[6px]'></div>
-  <div className='slider3 w-[100px] h-[100px] bg-red-500  rounded-[6px]'></div>
+<div className='flex z-30 mt-[300px] lg:mt-0 lg:flex-col gap-[20px]'>
+  <div className='slider1  w-[60px] lg:w-[100px]  h-[60px] lg:h-[100px] bg-red-500  rounded-[6px]'></div>
+  <div className='slider2  w-[60px] lg:w-[100px]  h-[60px] lg:h-[100px] bg-red-500  rounded-[6px]'></div>
+  <div className='slider3  w-[60px] lg:w-[100px]  h-[60px] lg:h-[100px] bg-red-500  rounded-[6px]'></div>
 </div>
-  <div className='main-img w-[500px] h-[500px] bg-green-400 rounded-[7px]'></div>
+  <div className='main-img ml-[-238px] lg:ml-0  w-[350px] h-[350px] lg:w-[500px] lg:h-[500px] bg-green-400 rounded-[7px]'></div>
 
 </div>
 
@@ -62,13 +53,13 @@ useEffect(() => {
           <div className=' flex  justify-between items-center'>
      
      {/* ----------------- responsive details */}
-           <div className='lg:hidden'><h2 className='text-[24px] truncate w-[300px]  dark:text-white    lg:text-[36px] font-semibold font-poppins text-second'>gsfgdf</h2>
+           <div className='lg:hidden pt-[50px]'><h2 className='text-[24px] truncate w-[300px]  dark:text-white    lg:text-[36px] font-semibold font-poppins text-second'>gsfgdf</h2>
           <div className='lg:hidden mt-[20px] mb-[24px] '>
             <h2 className='text-[24px] font-semibold font-poppins  dark:text-white    text-second'> $</h2>
             <h2 className=' line-through text-[14px] flex  font-medium font-poppins  dark:text-white    text-primary'>$79.00</h2>
           </div>
            <div className='flex justify-between gap-[5px]'>
-              <div className='flex items-center gap-[5px]'>
+              <div className='flex  items-center gap-[5px]'>
             <FaStar className='text-yellow-500' />
             <h2 className='text-[12px] font-normal font-poppins  dark:text-white text-primary'>4.9 (98)</h2>
               </div>
@@ -79,22 +70,22 @@ useEffect(() => {
             <div className='py-[33px]   hidden   lg:flex justify-between gap-[5px]'>
               <div className='flex items-center gap-[5px]'>
             <FaStar className='text-yellow-500' />
-            <h2 className='text-[16px] font-semibold  dark:text-white    font-poppins text-second'>4.9</h2>
+            <h2 className='text-[16px] font-semibold   dark:text-white    font-poppins text-second'>4.9</h2>
               </div>
-            .
+            <div className='w-[5px] h-[5px] mt-[9px] bg-black dark:bg-amber-50 rounded-full'></div>
           <h2 className='text-[16px] font-medium  dark:text-white    font-poppins text-primary'>142 reviews</h2>
             </div>
 {/* --------------------- price */}
           <div className='hidden lg:inline-block'>
-            <h2 className='text-[24px] font-semibold  dark:text-white    font-poppins text-second'>$</h2>
-            <h2 className=' line-through text-[14px]  dark:text-white    font-medium font-poppins text-primary'>$199.99</h2>
+            <h2 className='text-[24px] font-semibold  dark:text-white    font-poppins text-second'>$gsgs</h2>
+            <h2 className=' line-through text-[14px] flex justify-end dark:text-white    font-medium font-poppins text-primary'>$199.99</h2>
           </div>
           </div>
 
 {/* ------------------ size details */}
-          <div>
-            <h2 className='text-[16px] font-semibold font-poppins  dark:text-white    text-second'>Size: S</h2>
-            <div className=' flex  gap-[10px] pt-[12px]'>
+          <div className='flex flex-wrap'>
+            <h2 className='text-[16px] font-semibold font-poppins  dark:text-white pt-[20px] lg:pt-0 text-second'>Size: S</h2>
+            <div className=' flex flex-wrap  gap-[10px] pt-[12px]'>
             <button className='flex w-[72px] py-[10px] px-[31px] border  dark:text-white    border-[#E5E7EB] rounded-[12px] hover:text-white  hover:bg-[#0EA5E9] text-[16px] font-semibold font-poppins text-primary'>S</button>
             <button className='flex w-[72px] py-[10px] px-[31px] border  dark:text-white    border-[#E5E7EB] rounded-[12px] hover:text-white hover:bg-[#0EA5E9]  justify-center items-center text-[16px] font-semibold font-poppins text-primary'>M</button>
             <button className='flex w-[72px] py-[10px] px-[31px] border  dark:text-white    border-[#E5E7EB] rounded-[12px] hover:text-white hover:bg-[#0EA5E9]  justify-center items-center text-[16px] font-semibold font-poppins text-primary '> L</button>
@@ -111,43 +102,38 @@ useEffect(() => {
                 <button className='border border-[#E5E7EB] rounded-full w-[24px] h-[24px] flex  bg-white justify-center items-center'>+</button>
 
               </div>
-              <button className=' lg:w-[178px] bg-black hover:scale-[1.1] hover:bg-green-300 duration-[.4s] rounded-full'><h2 className='py-[14px] px-[32px] text-[16px] font-medium font-poppins text-white '>Add to cart</h2> </button>
+              <button className=' lg:w-[178px] bg-black hover:scale-[1.1] hover:bg-green-300 duration-[.4s] rounded-full py-[14px] px-[32px] text-[16px] font-medium font-poppins text-white '>Add to cart </button>
             </div>
 {/* ------------------- sub-total */}
 
             <div className=' hidden lg:block'>
-            <div className='flex justify-between items-center gap-[10px] pt-[32px] pb-[16px]'>
+            <div className='flex justify-between items-center gap-[10px] lg:pt-0 pt-[32px] pb-[16px]'>
               <div>
-                <p className='text-[16px] font-normal font-poppins dark:text-white    text-primary'>$169.99 x 1</p>
-                <p className='text-[16px] font-normal font-poppins dark:text-white    text-primary'>Tax estimate</p>
+                <p className='text-[16px] font-normal font-poppins dark:text-white  text-primary'>$169.99 x 1</p>
+                <p className='text-[16px] font-normal font-poppins dark:text-white  text-primary'>Tax estimate</p>
               </div>
               <div>
                 <p className='text-[16px] font-normal font-poppins dark:text-white    text-primary'>$169.99</p>
-                <p className='text-[16px] font-normal font-poppins dark:text-white    text-primary'>$0</p>
+                <p className='text-[16px] flex justify-end font-normal font-poppins dark:text-white    text-primary'>$0</p>
               </div>            
             </div>      
-              <div className='flex justify-between items-center pt-[16px] pb-[33px]'>
+              <div className='flex justify-between items-center lg:pt-0 pt-[16px] pb-[33px]'>
                 <h2 className='text-[16px] font-semibold font-poppins dark:text-white    text-second'>Total</h2>
               <h2 className='text-[16px] font-semibold font-poppins dark:text-white    text-second'>$169.99</h2>
               </div>
             </div>
         </div>
-
-        
       </div>
     </div>
   </div>
 </section>
-
-
 {/* --------------------- product items */}
-    
     <section id='AboutProduct' className=' pt-[40px] pb-[76px] lg:pt-[52px] lg:pb-[96px] dark:bg-primary'>
         <div className="container">
             <div className="product_row lg:pl-0 px-[30px]">
                 <div className='pb-[40px] lg:pb-[60px]'>
-                    <h1 className='text-[20px] lg:text-[36px] dark:text-white     font-semibold hidden lg:inline-block font-poppins text-second'><span className='text-[20px] inline-block lg:hidden  font-semibold font-poppins text-second'> About this product</span></h1>
-                    <p className='w-[310px] lg:w-[735px]  dark:text-white    text-[14px] lg:text-[16px] font-normal font-poppins  text-primary pt-[4px] '></p>
+                    <h1 className='text-[20px] lg:text-[36px] dark:text-white font-semibold hidden lg:inline-block font-poppins text-second'>dgdt</h1>
+                    <p className='w-[310px] lg:w-[735px]  dark:text-white    text-[14px] lg:text-[16px] font-normal font-poppins  text-primary pt-[4px] '>tyhr</p>
                 </div>
                 {/* ----------------- cart details */}
                 <div className='pb-[40px] lg:pb-[60px]'>

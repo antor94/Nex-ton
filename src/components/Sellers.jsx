@@ -58,8 +58,8 @@ const Sellers = () => {
     const[product , index] = useState([]) 
 
 useEffect(()=>{
-  axios.get('https://api.jsonbin.io/v3/b/68934a4bf7e7a370d1f547b6')
-.then((res)=>index( res.data.record))
+  axios.get('https://dummyjson.com/products')
+.then((res)=>index( res.data.products))
 .catch((err)=>console.log(err))
 } , [])
 
@@ -106,7 +106,7 @@ const handelShow = (data) =>{
                 <Slider {...settings}>
                     {
                       product.slice(0,10) .map((item,i)=>(
-                        <SellerCard certClick={()=>handelShow(item.id)} showDatails = { ()=> handlebutton (item) } key={i} sellerImg={item.imagesList} Sellerh2={item.name} sellerP={item.price} sellerText={item.category.slug}  />
+                        <SellerCard certClick={()=>handelShow(item.id)} showDatails = { ()=> handlebutton (item) } key={i} sellerImg={item.images} Sellerh2={item.title} sellerP={item.price} sellerText={item.category.slug}  />
                       ))
                     }  
                 </Slider>

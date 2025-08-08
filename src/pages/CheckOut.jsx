@@ -6,6 +6,7 @@ import { AArrowDown, Armchair, Eraser, Scaling } from 'lucide-react';
 import icon from '../assets/images/item-image.png'
 import BreadCrum from '../components/common/BreadCrum';
 import axios from 'axios';
+import { RiDeleteBin4Line } from "react-icons/ri";
 
 
 const CheckOut = () => {
@@ -14,7 +15,6 @@ const [value , setValue ] = useState(1)
 const localIds = JSON.parse(localStorage.getItem('productID'))
 
 
-const [productQty , setProductQty] =useState(1)
 
 
 const increment = ()=>{ 
@@ -30,40 +30,28 @@ const decrement = ()=>{
 
 // ---------------------api fatch
 
-
   const [cartProduct , setCartProduct] = useState([])
-  
   useEffect(()=>{
-    
-    axios.get('https://api.jsonbin.io/v3/b/68934a4bf7e7a370d1f547b6')
+    axios.get('https://dummyjson.com/products')
     .then((res) => {
-   const cartData =   res.data.record.filter((item)=>{
+   const cartData =   res.data.products.filter((item)=>{
           return   localIds?.includes(item.id)
       })
-
       const withQty = cartData.map((item) =>{
         return {...item , qty:1 , unitPrice: item.price}
       })
-
-
     setCartProduct(withQty)
-
     })
     .catch((err) => console.log(err));
-
   } , [])
-
-
 
   const handleAddQty = (data)=>{
     setCartProduct((prev)=>(
-
       prev.map((item)=>{
         if(item.id != data) return item
 
         const undateQty = item.qty +1
         const updatePrice = item.unitPrice * undateQty
-
         return {...item , qty:undateQty , price: updatePrice  }
 
   })
@@ -74,6 +62,28 @@ const decrement = ()=>{
   const totalPrice = cartProduct.reduce((sum , cartProduct)=>{
     return sum + cartProduct.price
   },0)
+
+
+
+  //-------- delete function
+  const [cartProducts, setCartProducts] = useState([]);
+
+  const handleDelete = (id) => {
+    const existingIds = JSON.parse(localStorage.getItem("productID")) || [];
+
+    const updatedIds = existingIds.filter((itemId) => itemId !== id);
+
+    localStorage.setItem("productID", JSON.stringify(updatedIds));
+
+    const updatedCart = cartProducts.filter((item) => item.id !== id);
+    setCartProducts(updatedCart);
+
+console.log('fsdgsfdg')
+
+  };
+
+
+
 
 
   return (
@@ -293,6 +303,7 @@ const decrement = ()=>{
                               </div>
                             </div>
                               </div>         
+                            <button onClick={() => handleDelete(item.id)} className='absolute right-[200px]'><RiDeleteBin4Line  className='text-[25px]  dark:text-white  text-black' /></button>
                             </div>
                           <div className=' flex  justify-between items-center'>
                           <div className=' '>

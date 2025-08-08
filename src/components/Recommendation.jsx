@@ -61,11 +61,10 @@ const Recommendation = () => {
   const [product, setProduct] = useState([]);
   
 useEffect(() => {
-  axios.get('https://api.jsonbin.io/v3/b/68934a4bf7e7a370d1f547b6')
-    .then((res) => setProduct(res.data.record))
+  axios.get('https://dummyjson.com/products')
+    .then((res) => setProduct(res.data.products))
     .catch((err) => console.log(err));
 }, []);
-  console.log(product)
 
   // -------------- navigate
   
@@ -101,7 +100,7 @@ const handelShow = (data) =>{
                 <Slider {...settings}>
                     {
                       product.slice(0,10).map((item,i)=>(
-                        <SellerCard certClick={()=>handelShow(item.id)} showDatails = { ()=> handlebutton (item) } key={i} sellerImg={item.imagesList[0]} Sellerh2={item.name} sellerdis={item.rating} sellerP={item.price} sellerText={item.category} sellerFont={item.discountPercentage} seelerstock={item.stock} />
+                        <SellerCard certClick={()=>handelShow(item.id)} showDatails = { ()=> handlebutton(item) } key={i} sellerImg={item.images} Sellerh2={item.title} sellerdis={item.rating} sellerP={item.price} sellerText={item.category} sellerFont={item.discountPercentage} seelerstock={item.stock} />
                       ))
                     }  
                                 

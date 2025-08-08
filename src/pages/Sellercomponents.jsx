@@ -4,29 +4,46 @@ import { GoStarFill } from "react-icons/go";
 import SellerCard from "../components/common/SellerCard";
 import Pagination from "../components/Pagination";
 import BreadCrum from "../components/common/BreadCrum";
+import { useNavigate } from "react-router";
 
-const Sellercomponents = ({
-  sellerImg,
-  Sellerh2,
-  sellerP,
-  sellerText,
-  sellerFont,
-  sellerStar,
-}) => {
+const Sellercomponents = () => {
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(1);
   const itemsPerPage = 6;
 
   useEffect(() => {
     axios
-      .get("https://api.jsonbin.io/v3/b/68934a4bf7e7a370d1f547b6")
-      .then((res) => setProducts(res.data.record))
+      .get("https://dummyjson.com/products")
+      .then((res) => setProducts(res.data.products))
       .catch((err) => console.log(err));
   }, []);
 
   const start = (page - 1) * itemsPerPage;
   const currentItems = products.slice(start, start + itemsPerPage);
   const totalPages = Math.ceil(products.length / itemsPerPage);
+
+  // -------------- navigate
+  
+  const navigate = useNavigate()
+
+const handlebutton = (productInfo) => {
+  navigate(`/AboutProducts/${productInfo.id}`, 
+
+);
+};
+
+
+// ---------------- store application
+
+const handelShow = (data) =>{
+
+  let exisId = JSON.parse(localStorage.getItem('productID')) || []
+
+  exisId.push(data)
+
+  localStorage.setItem('productID' , JSON.stringify(exisId))
+}
+
 
   return (
     <>
@@ -177,9 +194,11 @@ const Sellercomponents = ({
                 <div className="seller_row grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
                   {currentItems.map((item, i) => (
                     <SellerCard
+                    showDatails = { ()=> handlebutton(item) }
+                    certClick={()=>handelShow(item.id)}
                       key={i}
-                      sellerImg={item.imagesList}
-                      Sellerh2={item.name}
+                      sellerImg={item.images}
+                      Sellerh2={item.title}
                       sellerP={item.price}
                       sellerText={item.category}
                       sellerFont={item.discountPercentage}

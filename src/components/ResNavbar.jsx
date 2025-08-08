@@ -64,7 +64,7 @@ const ResNavbar = () => {
 
                 <li>
                   <Link
-                    to={"/"}
+                    to='./checkout'
                     className="flex justify-center items-center gap-2"
                   >
                     cart <PiShoppingCart className="text-2xl" />

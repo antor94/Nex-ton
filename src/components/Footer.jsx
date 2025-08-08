@@ -21,7 +21,7 @@ const Footer = () => {
       <div className='lg:flex pl-[24px]  lg:justify-between lg:items-center'>
         {/* ------------------- footer-logo */}
 <div className='w-[309px] h-[198px] mt-[20px]'>
-  <Link><img src={footerlogo} alt="logo" /></Link>
+  <Link to={'/'}><img src={footerlogo} alt="logo" /></Link>
   <Link className='pt-[20px] flex items-center gap-[8px]  lg:text-[16px] dark:text-white lg:font-normal lg:font-poppins lg:text-primary'>
     <MdFacebook className='w-[20px] h-[20px] text-[#4676ED]' />
     Facebook</Link>
