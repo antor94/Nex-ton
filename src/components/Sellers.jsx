@@ -8,6 +8,7 @@ import Slider from 'react-slick';
 import { Link, useNavigate } from 'react-router';
 
 const Sellers = () => {
+  // --------- slider
     var settings = {
     dots: true,
     arrows : false,
@@ -58,8 +59,8 @@ const Sellers = () => {
     const[product , index] = useState([]) 
 
 useEffect(()=>{
-  axios.get('https://dummyjson.com/products')
-.then((res)=>index( res.data.products))
+  axios.get('https://api.escuelajs.co/api/v1/products')
+.then((res)=>index( res.data))
 .catch((err)=>console.log(err))
 } , [])
 
@@ -102,7 +103,7 @@ const handelShow = (data) =>{
 
 {/* ------------------ recommendation-div */}
 
-<div className="slider-container pt-[40px]">
+             <div className="slider-container pt-[40px]">
                 <Slider {...settings}>
                     {
                       product.slice(0,10) .map((item,i)=>(
