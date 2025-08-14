@@ -90,7 +90,6 @@ const handleButton = ()=>{
           </div>
         </div>
       </section>
-
       </div>
     </Slider>
   </div>

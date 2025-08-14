@@ -10,6 +10,8 @@ import CommonHead from "./common/CommonHead";
 import { Link } from "lucide-react";
 import Slider from "react-slick";
 import SellerCard from "./common/SellerCard";
+import { GoStarFill } from "react-icons/go";
+import { FaCartShopping } from "react-icons/fa6";
 
 const AboutProducts = () => {
   // -------------- slider
@@ -81,18 +83,6 @@ const localIds = JSON.parse(localStorage.getItem('productID'))
   }, [perams.productId]);
 
   // ------------------ api fetch for recommendations
-  useEffect(() => {
-    axios
-      .get("https://api.escuelajs.co/api/v1/products")
-      .then((res) => setRecommendProducts(res.data))
-      .catch((err) => console.error( err));
-  }, []);
-  
-  // -------------------- recommendation match product
-  const cartProduct = Array.isArray(product)
-  ? product.filter(item => item.id === localIds)
-  : [];
-
 
 
 
@@ -360,18 +350,52 @@ const localIds = JSON.parse(localStorage.getItem('productID'))
 
       {/* --------------------- recommendation */}
 
-      <section className="py-[52px] lg:py-[88px] dark:bg-primary">
+
+      <section className="dark:bg-primary">
         <div className="container">
-          <CommonHead
-            headh2={"Recommendations."}
-            headp={"Best matching products for you"}
-          />
-          {/* ------------------ recommendation-div */}
 
-              <SellerCard certClick={() => handelShow(item.id)}  showDatails={() => handlebutton(item)}  key={i}  sellerImg={item.images[0]}  Sellerh2={item.title}  sellerdis={item.rating} sellerP={item.price} sellerText={item.category?.slug} />
-
+              <div className="group w-[309px] h-[448px] rounded-[16px] pb-[20px]  pl-[30px] lg:pl-0 relative">
+                <button
+                 
+                  className="w-[30px] h-[30px] rounded-full bg-gray-200 flex justify-center items-center absolute top-[18px] right-[16px] transition-all duration-300 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto "> <FaCartShopping />  </button>
+                <div
+            
+                  className="w-full rounded-2xl bg-[#F8FAFC] overflow-hidden"
+                >
+                  {" "}
+                  <img className="w-[500px]" src='' alt="reco-img" />{" "}
+                </div>
+                <div className="flex justify-between items-center pt-[20px]">
+                  <h2 className="text-[16px] truncate w-[200px] font-semibold dark:text-white font-poppins text-second">
+                   
+                  </h2>
+                  <h2 className="text-[16px] font-semibold font-poppins dark:text-white text-second">
+               $
+                  </h2>
+                </div>
+                <div className="flex justify-between items-center">
+                  <p className="text-[14px] font-normal truncate w-[200px] font-poppins dark:text-white text-primary">
+               
+                  </p>
+                  <p className="text-[14px] font-normal font-poppins dark:text-white text-primary line-through italic">
+           
+                  </p>
+                </div>
+                <div className="pt-[9px] flex gap-[10px] items-center">
+                  <GoStarFill className="text-[#FBBF24]" />
+                  <p className="ext-[14px] font-normal font-poppins dark:text-white text-primary">
+                 
+                  </p>
+                  <p className="ext-[14px] font-normal font-poppins dark:text-white text-primary">
+                   
+                  </p>
+                </div>
+              </div>
         </div>
+
       </section>
+
+
     </>
   );
 };

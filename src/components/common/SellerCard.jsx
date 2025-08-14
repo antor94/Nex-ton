@@ -16,9 +16,9 @@ const SellerCard = ({
 }) => {
   return (
     <>
-      <div className="group w-[309px] h-[448px] rounded-[16px] pb-[20px]  mb-[50px] pl-[30px] lg:pl-0 relative">
+      <div  onClick={certClick} className="group w-[309px] h-[448px] dark:bg-primary rounded-[16px] pb-[20px]  mb-[50px] pl-[30px] lg:pl-0 relative">
         <button
-          onClick={certClick}
+         
           className="w-[30px] h-[30px] rounded-full bg-gray-200 flex justify-center items-center absolute top-[18px] right-[16px] transition-all duration-300 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto "> <FaCartShopping />  </button>
         <div
           onClick={showDatails}

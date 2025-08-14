@@ -41,18 +41,34 @@ const CheckOut = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  const handleAddQty = (data) => {
+  // --------------------- quantity add
+
+  const handleAddQty = (id) => {
     setCartProduct((prev) =>
       prev.map((item) => {
-        if (item.id != data) return item;
-
-        const undateQty = item.qty + 1;
-        const updatePrice = item.unitPrice * undateQty;
-        return { ...item, qty: undateQty, price: updatePrice };
+        if (item.id !== id) return item;
+        const newQty = item.qty + 1;
+        const newPrice = item.unitPrice * newQty;
+        return { ...item, qty: newQty, price: newPrice };
       })
     );
   };
 
+
+  // --------------------- quantity remove
+  const handleRemoveQty = (id) => {
+    setCartProduct((prev) =>
+      prev.map((item) => {
+        if (item.id !== id) return item;
+        const newQty = item.qty > 1 ? item.qty - 1 : 1;
+        const newPrice = item.unitPrice * newQty;
+        return { ...item, qty: newQty, price: newPrice };
+      })
+    );
+  };
+
+
+  // ---------------------- total price
   const totalPrice = cartProduct.reduce((sum, cartProduct) => {
     return sum + cartProduct.price;
   }, 0);
@@ -132,7 +148,7 @@ const CheckOut = () => {
                   </div>
                 </div>
               </div>
-    
+
               {/* ------------------ 2nd div item */}
               <div className="pt-[24px] flex justify-between items-center">
                 <div className=" flex gap-[20px] ">
@@ -172,7 +188,6 @@ const CheckOut = () => {
                   </div>
                 </div>
               </div>
-
             </div>
 
             <div className="pt-[30px] lg:pt-0">
@@ -435,7 +450,10 @@ const CheckOut = () => {
                           {/* ------------------ button */}
                           <div className="py-[38px] flex items-center justify-between">
                             <div className="w-[110px] bg-[#F8F8F8] flex justify-around py-[8px] px-[12px] rounded-full">
-                              <button className=" border border-[#E5E7EB] rounded-full w-[24px] h-[24px] flex bg-white justify-center items-center ">
+                              <button
+                                onClick={() => handleRemoveQty(item.id)}
+                                className=" border border-[#E5E7EB] rounded-full w-[24px] h-[24px] flex bg-white justify-center items-center "
+                              >
                                 -
                               </button>
                               <h2 className="text-[16px] font-medium font-poppins text-primary">

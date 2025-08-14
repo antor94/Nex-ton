@@ -23,7 +23,9 @@ const Sellercomponents = () => {
   useEffect(() => {
     axios
       .get("https://api.escuelajs.co/api/v1/products")
-      .then((res) => setProducts(res.data))
+      .then((res) =>{
+        
+      } )
       .catch((err) => console.log(err));
   }, []);
 
@@ -70,7 +72,7 @@ const Sellercomponents = () => {
                   </div>
 
                   <div className="mt-[24px] flex gap-[12px] mb-[16px]">
-                    <input id="cat-men" className="w-[20px] h-[20px] bg-red-200"  type="checkbox"  />
+                    <input id="cat-men" className="w-[20px]  h-[20px] bg-red-200"  type="checkbox"  />
                     <label  htmlFor="cat-men" className="cursor-pointer select-none text-[14px] font-normal font-poppins text-primary dark:text-white"> Men’s fashion </label>
                   </div>
                   <div className=" flex gap-[12px] mb-[16px]">
@@ -118,14 +120,14 @@ const Sellercomponents = () => {
                       Price range
                     </h2>
                   </div>
-                  <div className="pt-[24px]"><input className="w-[285px] dark:text-[#0EA5E9]" type="range" /></div>
+                  <div className="pt-[24px]"><input className="w-[285px]  dark:text-[#0EA5E9]" type="range" /></div>
                   <div className="flex gap-[24px] ">
                     <div>
                       <h2 className="text-[16px] font-normal font-poppins text-primary dark:text-white mt-[20px] mb-[4px]">
                         Min price
                       </h2>
                       <div className="w-[130px] h-[36px] border border-[#E5E7EB]  rounded-full px-[16px] flex justify-between items-center">
-                         <input className="w-[90%] text-[14px] font-normal font-poppins dark:text-white text-primary" type="number" placeholder="100" />
+                         <input className="w-[90%] text-[14px] font-normal border-none  outline-none font-poppins dark:text-white text-primary" type="number" placeholder="100" />
                         <p className="text-[14px] font-normal font-poppins text-primary dark:text-white">
                           $
                         </p>
@@ -136,7 +138,7 @@ const Sellercomponents = () => {
                         Max price
                       </h2>
                       <div className="w-[130px] h-[36px] border border-[#E5E7EB]  rounded-full px-[16px] flex justify-between items-center">
-                        <input className="w-[90%] text-[14px] font-normal font-poppins dark:text-white text-primary" type="number" placeholder="500" />
+                        <input className="w-[90%] text-[14px] font-normal font-poppins border-none  outline-none dark:text-white text-primary" type="number" placeholder="500" />
                  
                         <p className="text-[14px] font-normal font-poppins text-primary dark:text-white">   $</p>
                       </div>

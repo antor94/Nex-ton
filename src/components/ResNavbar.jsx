@@ -1,12 +1,31 @@
 import React, { useState } from "react";
 import resNav from "../assets/images/reslogo.png";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { RiSearch2Line, RiUserLine } from "react-icons/ri";
 import { PiShoppingCart } from "react-icons/pi";
+import { useDispatch, useSelector , } from "react-redux";
 
 const ResNavbar = () => {
+  // ---------------- button state
   const [showNav, setShownav] = useState(false);
 
+  // --------------- search bar
+
+  const [searchInput, setSearchInput] = useState("");
+  const [searchResult, setSearchResult] = useState(null);
+  const reduxProduct = useSelector((state) => state.proId.value);
+
+  const handleSearch = (e) => {
+    // if(!searchInput) return alert('please input data')
+    const filterData = product.filter((item) =>
+      item.title.toLowerCase().includes(searchInput.toLowerCase())
+    );
+    setSearchResult(filterData);
+  };
+
+  // --------------- navigete
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -17,11 +36,19 @@ const ResNavbar = () => {
               <img src={resNav} alt="logo" />
             </Link>
             <div className="menu_src w-[200px] h-[36px] rounded-[100px] bg-[#F8F8F8] flex items-center pl-[24px]">
-              <RiSearch2Line className="text-xl text-primary" />
+              <RiSearch2Line
+                onClick={handleSearch}
+                className="text-xl text-primary"
+              />
               <input
+                onChange={(e) => {
+                  setSearchInput(e.target.value);
+                  handleSearch();
+                }}
                 className="w-full pl-[10px] outline-none border-none text-[12px] font-normal font-poppins"
                 type="text"
                 placeholder="Search in products..."
+                value={searchInput}
               />
             </div>
             <button
@@ -55,7 +82,7 @@ const ResNavbar = () => {
               <ul className="flex flex-col items-center gap-5 text-[16px] font-poppins font-normal text-white ">
                 <li>
                   <Link
-                    to='./Login'
+                    to="./Login"
                     className="flex justify-center items-center gap-2"
                   >
                     profile <RiUserLine className="text-2xl" />
@@ -64,7 +91,7 @@ const ResNavbar = () => {
 
                 <li>
                   <Link
-                    to='./checkout'
+                    to="./checkout"
                     className="flex justify-center items-center gap-2"
                   >
                     cart <PiShoppingCart className="text-2xl" />
@@ -81,6 +108,29 @@ const ResNavbar = () => {
           </div>
         </div>
       </nav>
+
+      {/* -------------------- product serach */}
+      <div className="flex bg-[#0000006d] justify-center">
+        <div className="w-[100vw] flex flex-wrap gap-[30px] justify-center items-center pt-6">
+          {searchResult?.length === 0 ? (
+            <h2 className="text-[24px] font-medium font-poppins text-red-600">
+              {" "}
+              Product Not Found !
+            </h2>
+          ) : (
+            searchResult?.map((item) => (
+              <SellerCard
+                certClick={handleProduct}
+                sellerImg={item.images}
+                Sellerh2={item.title}
+                sellerdis={item.rating}
+                sellerP={item.price}
+                sellerText={item.category.slug}
+              />
+            ))
+          )}
+        </div>
+      </div>
     </>
   );
 };

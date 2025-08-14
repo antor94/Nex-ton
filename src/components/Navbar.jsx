@@ -1,4 +1,3 @@
-
 import logo from "../assets/images/logo.png";
 import { RiSearch2Line } from "react-icons/ri";
 import { RiUserLine } from "react-icons/ri";
@@ -32,6 +31,7 @@ useEffect(() => {
     .catch((err) => console.log(err));
 }, []);
  
+
 // --------------- search bar
  
 const [searchInput , setSearchInput] = useState('')
@@ -40,7 +40,7 @@ const reduxProduct = useSelector((state)=>state.proId.value)
 
 
 const handleSearch =(e)=>{
-
+  // if(!searchInput) return alert('please input data')
   const filterData = product.filter((item)=> item.title.toLowerCase().includes(searchInput.toLowerCase()))
   setSearchResult(filterData)
 }
@@ -50,13 +50,17 @@ const navigate = useNavigate()
 const dispatch = useDispatch()
 
 
+
 const handleProduct = (productName) =>{
   navigate('/Sellercomponents')
   dispatch(productNameReducer(productName))
   setSearchResult(null)
   console.log('working')
 
+  
 } 
+
+
 
   return (
     <>
@@ -90,6 +94,7 @@ const handleProduct = (productName) =>{
       </nav>
       
       {/* ---------------------- <Card /> */}
+
       {
         showCart&&
         <Card closeCart={()=>setShowCart(!showCart)} />
@@ -98,13 +103,18 @@ const handleProduct = (productName) =>{
 
       {/* -------------------- product serach */}
       <div className="flex bg-[#0000006d] justify-center">
-        <div className="w-[1400px] flex flex-wrap  gap-[30px] justify-center items-center pt-6" >
-          {        
-            searchResult?.length == 0 ?       
+        <div className="w-[1400px] hidden lg:flex flex-wrap  gap-[30px] justify-center items-center " >
+
+          {
+            
+            searchResult?.length == 0 ?
+            
             <h2 className="text-[24px] font-medium font-poppins text-red-600"> Product Not Found !</h2>
             :
-            searchResult?.map((item)=>(    
-              <SellerCard  certClick={handleProduct} sellerImg={item.images} Sellerh2={item.title} sellerdis={item.rating} sellerP={item.price} sellerText={item.category} sellerFont={item.discountPercentage} seelerstock={item.stock} />   
+            searchResult?.map((item)=>(
+          
+              <SellerCard  certClick={handleProduct} sellerImg={item.images} Sellerh2={item.title} sellerdis={item.rating} sellerP={item.price} sellerText={item.category.slug} />
+              
             ))
           }
 
