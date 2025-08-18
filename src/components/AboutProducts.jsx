@@ -187,20 +187,20 @@ const localIds = JSON.parse(localStorage.getItem('productID'))
                     Size: S
                   </h2>
                   <div className=" flex flex-wrap  gap-[10px] pt-[12px]">
-                    <button className="flex w-[72px] py-[10px] px-[31px] border  dark:text-white    border-[#E5E7EB] rounded-[12px] hover:text-white  hover:bg-[#0EA5E9] text-[16px] font-semibold font-poppins text-primary">
+                    <button className="flex w-[72px] py-[10px] px-[31px] border  dark:text-white  cursor-pointer focus:bg-[#0EA5E9]   border-[#E5E7EB] rounded-[12px] hover:text-white  hover:bg-[#] text-[16px] font-semibold font-poppins text-primary">
                       S
                     </button>
-                    <button className="flex w-[72px] py-[10px] px-[31px] border  dark:text-white    border-[#E5E7EB] rounded-[12px] hover:text-white hover:bg-[#0EA5E9]  justify-center items-center text-[16px] font-semibold font-poppins text-primary">
+                    <button className="flex w-[72px] py-[10px] px-[31px] border  dark:text-white cursor-pointer focus:bg-[#0EA5E9]    border-[#E5E7EB] rounded-[12px] hover:text-white hover:bg-[#0EA5E9]  justify-center items-center text-[16px] font-semibold font-poppins text-primary">
                       M
                     </button>
-                    <button className="flex w-[72px] py-[10px] px-[31px] border  dark:text-white    border-[#E5E7EB] rounded-[12px] hover:text-white hover:bg-[#0EA5E9]  justify-center items-center text-[16px] font-semibold font-poppins text-primary ">
+                    <button className="flex w-[72px] py-[10px] px-[31px] border  dark:text-white cursor-pointer focus:bg-[#0EA5E9]    border-[#E5E7EB] rounded-[12px] hover:text-white hover:bg-[#0EA5E9]  justify-center items-center text-[16px] font-semibold font-poppins text-primary ">
                       {" "}
                       L
                     </button>
-                    <button className="flex w-[72px] py-[10px] px-[31px] border  dark:text-white    border-[#E5E7EB] rounded-[12px] hover:text-white hover:bg-[#0EA5E9]  justify-center items-center text-[16px] font-semibold font-poppins text-primary">
+                    <button className="flex w-[72px] py-[10px] px-[31px] border  dark:text-white cursor-pointer focus:bg-[#0EA5E9]    border-[#E5E7EB] rounded-[12px] hover:text-white hover:bg-[#0EA5E9]  justify-center items-center text-[16px] font-semibold font-poppins text-primary">
                       Xl
                     </button>
-                    <button className="flex w-[72px] py-[10px] px-[31px] border  dark:text-white    border-[#E5E7EB] rounded-[12px] hover:text-white hover:bg-[#0EA5E9]  justify-center items-center text-[16px] font-semibold font-poppins text-primary">
+                    <button className="flex w-[72px] py-[10px] px-[31px] border  dark:text-white cursor-pointer focus:bg-[#0EA5E9]    border-[#E5E7EB] rounded-[12px] hover:text-white hover:bg-[#0EA5E9]  justify-center items-center text-[16px] font-semibold font-poppins text-primary">
                       2Xl
                     </button>
                   </div>
