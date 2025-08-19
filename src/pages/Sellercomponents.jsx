@@ -24,7 +24,7 @@ const Sellercomponents = () => {
     axios
       .get("https://api.escuelajs.co/api/v1/products")
       .then((res) =>{
-        
+        setProducts(res.data)
       } )
       .catch((err) => console.log(err));
   }, []);
@@ -70,47 +70,31 @@ const Sellercomponents = () => {
                       Categories{" "}
                     </h2>{" "}
                   </div>
-
                   <div className="mt-[24px] flex gap-[12px] mb-[16px]">
-                    <input id="cat-men" className="w-[20px]  h-[20px] bg-red-200"  type="checkbox"  />
-                    <label  htmlFor="cat-men" className="cursor-pointer select-none text-[14px] font-normal font-poppins text-primary dark:text-white"> Men’s fashion </label>
+                    <input id="cat-men1" className="w-[20px]  h-[20px] bg-red-200"  type="checkbox"  />
+                    <label  htmlFor="cat-men1" className="cursor-pointer select-none text-[14px] font-normal font-poppins text-primary dark:text-white"> Men’s fashion </label>
                   </div>
-                  <div className=" flex gap-[12px] mb-[16px]">
-                    <button className="w-[20px] h-[20px] border border-[#94A3B8] rounded-[4px] "></button>
-                    <h2 className="text-[14px] font-normal font-poppins text-primary dark:text-white">
-                      Women’s fashion
-                    </h2>
+                            <div className="mt-[24px] flex gap-[12px] mb-[16px]">
+                    <input id="cat-men2" className="w-[20px]  h-[20px] bg-red-200"  type="checkbox"  />
+                    <label  htmlFor="cat-men2" className="cursor-pointer select-none text-[14px] font-normal font-poppins text-primary dark:text-white">Women’s fashion </label>
                   </div>
-                  <div className=" flex gap-[12px] mb-[16px]">
-                    <button className="w-[20px] h-[20px] border border-[#94A3B8] rounded-[4px] "></button>
-                    <h2 className="text-[14px] font-normal font-poppins text-primary dark:text-white">
-                      Kids & Toys
-                    </h2>
+                            <div className="mt-[24px] flex gap-[12px] mb-[16px]">
+                    <input id="cat-men3" className="w-[20px]  h-[20px] bg-red-200"  type="checkbox"  />
+                    <label  htmlFor="cat-men3" className="cursor-pointer select-none text-[14px] font-normal font-poppins text-primary dark:text-white"> Kids & Toys </label>
                   </div>
-                  <div className=" flex gap-[12px] mb-[16px]">
-                    <button className="w-[20px] h-[20px] border border-[#94A3B8] rounded-[4px] "></button>
-                    <h2 className="text-[14px] font-normal font-poppins text-primary dark:text-white">
-                      Accessories
-                    </h2>
+                            <div className="mt-[24px] flex gap-[12px] mb-[16px]">
+                    <input id="cat-men4" className="w-[20px]  h-[20px] bg-red-200"  type="checkbox"  />
+                    <label  htmlFor="cat-men5" className="cursor-pointer select-none text-[14px] font-normal font-poppins text-primary dark:text-white"> Accessories</label>
                   </div>
-                  <div className=" flex gap-[12px] mb-[16px]">
-                    <button className="w-[20px] h-[20px] border border-[#94A3B8] rounded-[4px] "></button>
-                    <h2 className="text-[14px] font-normal font-poppins text-primary dark:text-white">
-                      Cosmetics
-                    </h2>
+                            <div className="mt-[24px] flex gap-[12px] mb-[16px]">
+                    <input id="cat-men6" className="w-[20px]  h-[20px] bg-red-200"  type="checkbox"  />
+                    <label  htmlFor="cat-men6" className="cursor-pointer select-none text-[14px] font-normal font-poppins text-primary dark:text-white"> Cosmetics </label>
                   </div>
-                  <div className=" flex gap-[12px] mb-[16px]">
-                    <button className="w-[20px] h-[20px] border border-[#94A3B8] rounded-[4px] "></button>
-                    <h2 className="text-[14px] font-normal font-poppins text-primary dark:text-white">
-                      Shoes
-                    </h2>
+                            <div className="mt-[24px] flex gap-[12px] mb-[16px]">
+                    <input id="cat-men7" className="w-[20px]  h-[20px] bg-red-200"  type="checkbox"  />
+                    <label  htmlFor="cat-men7" className="cursor-pointer select-none text-[14px] font-normal font-poppins text-primary dark:text-white">Shoes </label>
                   </div>
-                  <div className=" flex gap-[12px] mb-[16px]">
-                    <button className="w-[20px] h-[20px] border border-[#94A3B8] rounded-[4px] "></button>
-                    <h2 className="text-[14px] font-normal font-poppins text-primary dark:text-white">
-                      Sports
-                    </h2>
-                  </div>
+
                 </div>
 
                 {/* ---------------- price range */}
@@ -156,40 +140,69 @@ const Sellercomponents = () => {
 
                   <div className=" flex gap-[12px] mb-[16px] mt-[24px]">
                     <input
-                      id="most-popular"
-                      type="checkbox"
+                      id="most-popular1"
+                      type="radio"
                       className="w-[20px] h-[20px] border rounded-full border-[#94A3B8] "
                     />
                     <label
-                      htmlFor="most-popular"
+                      htmlFor="most-popular1"
                       className="text-[14px] font-normal font-poppins text-primary dark:text-white cursor-pointer select-none"
                     >
                       Most Popular
                     </label>
                   </div>
-                  <div className=" flex gap-[12px] mb-[16px]">
-                    <button className="w-[20px] h-[20px] border border-[#94A3B8]  rounded-full "></button>
-                    <h2 className="text-[14px] font-normal font-poppins text-primary dark:text-white">
-                      Best Rating
-                    </h2>
+
+                       <div className=" flex gap-[12px] mb-[16px] mt-[24px]">
+                    <input
+                      id="most-popular2"
+                      type="radio"
+                      className="w-[20px] h-[20px] border rounded-full border-[#94A3B8] "
+                    />
+                    <label
+                      htmlFor="most-popular2"
+                      className="text-[14px] font-normal font-poppins text-primary dark:text-white cursor-pointer select-none"
+                    >
+                     Best Rating
+                    </label>
                   </div>
-                  <div className=" flex gap-[12px] mb-[16px]">
-                    <button className="w-[20px] h-[20px] border border-[#94A3B8] rounded-full "></button>
-                    <h2 className="text-[14px] font-normal font-poppins text-primary dark:text-white">
-                      Newest
-                    </h2>
+                            <div className=" flex gap-[12px] mb-[16px] mt-[24px]">
+                    <input
+                      id="most-popular3"
+                      type="radio"
+                      className="w-[20px] h-[20px] border rounded-full border-[#94A3B8] "
+                    />
+                    <label
+                      htmlFor="most-popular3"
+                      className="text-[14px] font-normal font-poppins text-primary dark:text-white cursor-pointer select-none"
+                    >
+                    Newest
+                    </label>
                   </div>
-                  <div className=" flex gap-[12px] mb-[16px]">
-                    <button className="w-[20px] h-[20px] border border-[#94A3B8] rounded-full "></button>
-                    <h2 className="text-[14px] font-normal font-poppins text-primary dark:text-white">
-                      Price Low - Hight
-                    </h2>
-                  </div>
-                  <div className=" flex gap-[12px] mb-[16px]">
-                    <button className="w-[20px] h-[20px] border border-[#94A3B8] rounded-full "></button>
-                    <h2 className="text-[14px] font-normal font-poppins text-primary dark:text-white">
-                      Price Hight - Low
-                    </h2>
+                            <div className=" flex gap-[12px] mb-[16px] mt-[24px]">
+                    <input
+                      id="most-popular4"
+                      type="radio"
+                      className="w-[20px] h-[20px] border rounded-full border-[#94A3B8] "
+                    />
+                    <label
+                      htmlFor="most-popular4"
+                      className="text-[14px] font-normal font-poppins text-primary dark:text-white cursor-pointer select-none"
+                    >
+                     Price Low - Hight
+                    </label>
+                  </div>               
+                        <div className=" flex gap-[12px] mb-[16px] mt-[24px]">
+                    <input
+                      id="most-popular5"
+                      type="radio"
+                      className="w-[20px] h-[20px] border rounded-full border-[#94A3B8] "
+                    />
+                    <label
+                      htmlFor="most-popular5"
+                      className="text-[14px] font-normal font-poppins text-primary dark:text-white cursor-pointer select-none"
+                    >
+                     Price Hight - Low
+                    </label>
                   </div>
                 </div>
               </div>

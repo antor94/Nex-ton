@@ -102,7 +102,7 @@ const handleProduct = (productName) =>{
 
 
       {/* -------------------- product serach */}
-      <div className="flex bg-[#0000006d] justify-center">
+      <div className="flex  bg-[#0000006d] justify-center">
         <div className="w-[1400px] hidden lg:flex flex-wrap  gap-[30px] justify-center items-center " >
 
           {
@@ -111,7 +111,7 @@ const handleProduct = (productName) =>{
             
             <h2 className="text-[24px] font-medium font-poppins text-red-600"> Product Not Found !</h2>
             :
-            searchResult?.map((item)=>(
+            searchResult?.slice(0,8).map((item)=>(
           
               <SellerCard  certClick={handleProduct} sellerImg={item.images} Sellerh2={item.title} sellerdis={item.rating} sellerP={item.price} sellerText={item.category.slug} />
               
