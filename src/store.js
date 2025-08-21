@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import  counterSlice  from './srcSlice'
-import  Cartslice  from './Cartslice'
+import  RealSlice  from './RealSlice'
+
 
 
 export default configureStore({
   reducer: {
-    proId : counterSlice,
-    Id : Cartslice
+    proId:counterSlice,
+    SrcId:RealSlice,
+
   },
 })

@@ -7,10 +7,11 @@ import BreadCrum from "../components/common/BreadCrum";
 import { useNavigate } from "react-router";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { FiFilter } from "react-icons/fi";
+import { useSelector } from "react-redux";
 
 const Sellercomponents = () => {
+  
   const [products, setProducts] = useState([]);
-
   // -------------- pagination
   const [page, setPage] = useState(1);
   const itemsPerPage = 6;
@@ -18,13 +19,23 @@ const Sellercomponents = () => {
   const start = (page - 1) * itemsPerPage;
   const currentItems = products.slice(start, start + itemsPerPage);
   const totalPages = Math.ceil(products.length / itemsPerPage);
+  
+  const reduxProduct = useSelector((state)=>state.proId.value)
+
+
 
   // ------------- api fatch
+
   useEffect(() => {
     axios
       .get("https://api.escuelajs.co/api/v1/products")
       .then((res) =>{
-        setProducts(res.data)
+       if(!reduxProduct) return setProducts(res.data)
+
+        const filterProduct = res.data.filter((item)=>item.title == reduxProduct )
+
+        setProducts(filterProduct)
+
       } )
       .catch((err) => console.log(err));
   }, []);

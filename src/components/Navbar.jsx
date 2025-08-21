@@ -9,6 +9,8 @@ import SellerCard from "./common/SellerCard";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { productNameReducer } from "../srcSlice";
+import { incrementByAmount } from "../Cartslice";
+import errorimg from '../assets/images/error.png'
 
 const Navbar = () => {
 
@@ -53,7 +55,7 @@ const dispatch = useDispatch()
 
 const handleProduct = (productName) =>{
   navigate('/Sellercomponents')
-  dispatch(productNameReducer(productName))
+  dispatch(incrementByAmount(productName))
   setSearchResult(null)
   console.log('working')
 
@@ -102,23 +104,31 @@ const handleProduct = (productName) =>{
 
 
       {/* -------------------- product serach */}
-      <div className="flex  bg-[#0000006d] justify-center">
-        <div className="w-[1400px] hidden lg:flex flex-wrap  gap-[30px] justify-center items-center " >
+   
+   <div className="w-[700px] h-[500px] overflow-y-scroll cursor-pointer  absolute top-[79px] left-[640px] flex flex-col  gap-[30px] rounded-[8px] py-[10px] pl-[50px] z-999 bg-white  ">
+     
 
           {
             
             searchResult?.length == 0 ?
-            
-            <h2 className="text-[24px] font-medium font-poppins text-red-600"> Product Not Found !</h2>
-            :
-            searchResult?.slice(0,8).map((item)=>(
           
-              <SellerCard  certClick={handleProduct} sellerImg={item.images} Sellerh2={item.title} sellerdis={item.rating} sellerP={item.price} sellerText={item.category.slug} />
+        <div className=" flex justify-center">
+        <img src={errorimg} alt="errorimg" />
+
+     
+      </div>
+            :
+            searchResult?.map((item)=>(
+              
+              <div onClick={handleProduct} className=" flex items-center gap-[10px]  ">
+        <div className="w-[100px] overflow-hidden"><img src={item.images} alt="img" /></div>
+        <h2 className="text-[18px] font-medium truncate w-[400px] font-poppins text-primary">{item.title}</h2>
+        </div>
               
             ))
           }
 
-      </div>
+
           </div>
 
     </>

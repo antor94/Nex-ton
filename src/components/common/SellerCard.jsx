@@ -2,6 +2,7 @@ import React from "react";
 import { GoStarFill } from "react-icons/go";
 import { Link } from "react-router";
 import { FaCartShopping } from "react-icons/fa6";
+import { useSelector } from "react-redux";
 
 const SellerCard = ({
   sellerImg,
@@ -14,6 +15,14 @@ const SellerCard = ({
   seelerstock,
   certClick,
 }) => {
+
+const ReatRedux = useSelector((state)=>state.SrcId.value)
+
+
+
+
+
+
   return (
     <>
       <div  onClick={certClick} className="group w-[309px] h-[448px] dark:bg-primary rounded-[16px] pb-[20px]  mb-[50px] pl-[30px] lg:pl-0 relative">
