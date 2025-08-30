@@ -362,7 +362,7 @@ const localIds = JSON.parse(localStorage.getItem('productID'))
             
                   className="w-full rounded-2xl bg-[#F8FAFC] overflow-hidden"
                 >
-                  {" "}
+        
                   <img className="w-[500px]" src='' alt="reco-img" />{" "}
                 </div>
                 <div className="flex justify-between items-center pt-[20px]">

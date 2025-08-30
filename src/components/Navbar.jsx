@@ -21,13 +21,13 @@ const localIds = JSON.parse(localStorage.getItem('productID'))
 
 
   // --------------- api fatch
-  const [product, setProduct] = useState([]);
+  const [product, setProduct] = useState(null);
   
 useEffect(() => {
   axios.get('https://api.escuelajs.co/api/v1/products')
     .then((res) => {
       if(!reduxProduct) return setProduct(res.data)
-      const filterProduct = res.data.filter((item)=>item.title == reduxProduct)
+      const filterProduct = res.data.filter((item)=>item?.title == reduxProduct)
         setProduct(filterProduct)
     })
     .catch((err) => console.log(err));
@@ -36,14 +36,14 @@ useEffect(() => {
 
 // --------------- search bar
 const [searchInput , setSearchInput] = useState('')
-const [searchResult , setSearchResult] = useState(null)
+const [searchResult , setSearchResult] = useState([])
 
 // ---------redux data
 const reduxProduct = useSelector((state)=>state.proId.value)
 
 // --------- handler
 const handleSearch =()=>{
-  const filterData = product.filter((item)=> item.title.toLowerCase().includes(searchInput.toLowerCase()))
+  const filterData = product.filter((item)=> item?.title.toLowerCase().includes(searchInput.toLowerCase()))
   setSearchResult(filterData)
 }
 
@@ -99,7 +99,21 @@ const handleProduct = (productName) =>{
       {/* -------------------- product serach */}
 
       <div className="w-full py-3  ">
-        <h2 className="border-b border-green-50 pb-4 hover:bg-gray-300 duration-[.3s] text-base font-normal font-poppins text-main px-10">sdgsdfgdfghdh</h2>
+        {
+          
+          searchResult.length == 0 ?
+          
+          <div className="flex justify-center"><img src={errorimg} alt="error-img" /></div>
+          :
+          searchResult?.map((item)=>(
+            <h2 key={item.id} className="border-b border-green-50 pb-4 hover:bg-gray-300 duration-[.3s] text-base font-normal font-poppins text-main px-10">{item.title}</h2>
+            
+          ))
+        }
+
+
+       
+
 
       </div>
 
