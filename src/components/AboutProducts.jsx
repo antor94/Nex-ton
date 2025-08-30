@@ -69,8 +69,6 @@ const localIds = JSON.parse(localStorage.getItem('productID'))
 
   const [product, setProduct] = useState(null);
   const [currentImg, setCurrentImg] = useState(0);
-  //--------------------  Recommendation products state
-  const [recommendProducts, setRecommendProducts] = useState([]);
 
   // ------------------ api fetch for single product
   useEffect(() => {
@@ -83,6 +81,13 @@ const localIds = JSON.parse(localStorage.getItem('productID'))
   }, [perams.productId]);
 
   // ------------------ api fetch for recommendations
+  const [recommendProducts, setRecommendProducts] = useState([]);
+
+useEffect(() => {
+  axios.get('https://api.escuelajs.co/api/v1/products')
+    .then((res) => setRecommendProducts(res.data))
+    .catch((err) => console.log(err));
+}, []);
 
 
 
@@ -205,7 +210,6 @@ const localIds = JSON.parse(localStorage.getItem('productID'))
                     </button>
                   </div>
                 </div>
-
                 {/* ------------------- button */}
                 <div className="py-[38px] flex items-center gap-[50px] lg:justify-between">
                   <div className="w-[110px] bg-[#F8F8F8] flex justify-around py-[8px] px-[12px] rounded-full">
@@ -224,7 +228,6 @@ const localIds = JSON.parse(localStorage.getItem('productID'))
                   </button>
                 </div>
                 {/* ------------------- sub-total */}
-
                 <div className=" hidden lg:block">
                   <div className="flex justify-between items-center gap-[10px] lg:pt-0 pt-[32px] pb-[16px]">
                     <div>
@@ -350,50 +353,22 @@ const localIds = JSON.parse(localStorage.getItem('productID'))
 
       {/* --------------------- recommendation */}
 
-
-      <section className="dark:bg-primary">
+    <section className='py-[52px] lg:py-[88px] dark:bg-primary'>
         <div className="container">
+            <CommonHead  headh2={'Recommendations.'}/>
+{/* ------------------ recommendation-div */}
 
-              <div className="group w-[309px] h-[448px] rounded-[16px] pb-[20px]  pl-[30px] lg:pl-0 relative">
-                <button
-                 
-                  className="w-[30px] h-[30px] rounded-full bg-gray-200 flex justify-center items-center absolute top-[18px] right-[16px] transition-all duration-300 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto "> <FaCartShopping />  </button>
-                <div
-            
-                  className="w-full rounded-2xl bg-[#F8FAFC] overflow-hidden"
-                >
-        
-                  <img className="w-[500px]" src='' alt="reco-img" />{" "}
-                </div>
-                <div className="flex justify-between items-center pt-[20px]">
-                  <h2 className="text-[16px] truncate w-[200px] font-semibold dark:text-white font-poppins text-second">
-                   
-                  </h2>
-                  <h2 className="text-[16px] font-semibold font-poppins dark:text-white text-second">
-               $
-                  </h2>
-                </div>
-                <div className="flex justify-between items-center">
-                  <p className="text-[14px] font-normal truncate w-[200px] font-poppins dark:text-white text-primary">
-               
-                  </p>
-                  <p className="text-[14px] font-normal font-poppins dark:text-white text-primary line-through italic">
-           
-                  </p>
-                </div>
-                <div className="pt-[9px] flex gap-[10px] items-center">
-                  <GoStarFill className="text-[#FBBF24]" />
-                  <p className="ext-[14px] font-normal font-poppins dark:text-white text-primary">
-                 
-                  </p>
-                  <p className="ext-[14px] font-normal font-poppins dark:text-white text-primary">
-                   
-                  </p>
-                </div>
-              </div>
+              <div className="slider-container pt-[40px]">
+                <Slider {...settings}>
+                    {
+                      recommendProducts?.map((item,i)=>(
+                        <SellerCard key={i} sellerImg={item.images[0]} Sellerh2={item.title} sellerdis={item.rating} sellerP={item.price} sellerText={item.category.slug}  />
+                      ))
+                    }                        
+                </Slider>
+            </div>
         </div>
-
-      </section>
+    </section>
 
 
     </>

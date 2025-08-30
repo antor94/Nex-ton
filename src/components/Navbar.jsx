@@ -17,7 +17,7 @@ const Navbar = () => {
 const [showCart , setShowCart] = useState(false)
 
 // ----------- local id date
-const localIds = JSON.parse(localStorage.getItem('productID'))
+const localIds = useSelector((state)=>state.cartData.cartItems)
 
 
   // --------------- api fatch
@@ -36,9 +36,9 @@ useEffect(() => {
 
 // --------------- search bar
 const [searchInput , setSearchInput] = useState('')
-const [searchResult , setSearchResult] = useState([])
+const [searchResult , setSearchResult] = useState(null)
 
-// ---------redux data
+// --------- redux data
 const reduxProduct = useSelector((state)=>state.proId.value)
 
 // --------- handler
@@ -51,13 +51,11 @@ const handleSearch =()=>{
 const navigate = useNavigate()
 const dispatch = useDispatch()
 
-
 // ---------- handle-product
 const handleProduct = (productName) =>{
   navigate('/Sellercomponents')
   dispatch(incrementByAmount(productName))
   setSearchResult(null)
-
 } 
 
   return (
@@ -98,23 +96,17 @@ const handleProduct = (productName) =>{
 
       {/* -------------------- product serach */}
 
-      <div className="w-full py-3  ">
+      <div id="searchData" className="w-full py-3  ">
         {
           
-          searchResult.length == 0 ?
-          
+          searchResult ?.length == 0 ?        
           <div className="flex justify-center"><img src={errorimg} alt="error-img" /></div>
           :
           searchResult?.map((item)=>(
-            <h2 key={item.id} className="border-b border-green-50 pb-4 hover:bg-gray-300 duration-[.3s] text-base font-normal font-poppins text-main px-10">{item.title}</h2>
+            <h2 onClick={()=>handleProduct(item.title)} key={item.id} className="border-b border-green-50 pb-4 hover:bg-gray-300 duration-[.3s] text-base font-normal font-poppins text-main px-10">{item.title}</h2>
             
           ))
         }
-
-
-       
-
-
       </div>
 
 

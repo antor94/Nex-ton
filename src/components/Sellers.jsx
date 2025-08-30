@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
 import { Link, useNavigate } from 'react-router';
+import { useDispatch } from 'react-redux';
 
 const Sellers = () => {
   // --------- slider
@@ -53,6 +54,13 @@ const Sellers = () => {
       },
     ],
   };
+
+// ----------------- dispatch 
+      const dispatch = useDispatch()
+      const handleButton = ()=>{
+        dispatch(incrementByAmount(null))
+        navigate('/Sellercomponents')
+      }
 
 
   // ------------------- api fatch
@@ -113,7 +121,7 @@ const handelShow = (data) =>{
                 </Slider>
             </div>
 
-            <div className='flex justify-center items-center mt-[50px]'><Link to='/Sellercomponents' className='py-[20px] px-[20px] bg-black hover:bg-green-500 duration-[.4s]  rounded-3xl flex justify-center items-center text-[16px] font-medium font-poppins text-white'>See more</Link></div>
+            <div className='flex justify-center items-center mt-[50px]'><Link onClick={handleButton} to='/Sellercomponents' className='py-[20px] px-[20px] bg-black hover:bg-green-500 duration-[.4s]  rounded-3xl flex justify-center items-center text-[16px] font-medium font-poppins text-white'>See more</Link></div>
         </div>
     </section>
 

@@ -7,7 +7,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useDispatch } from "react-redux";
-import { productNameReducer } from "../srcSlice";
+import { incrementByAmount } from "../Cartslice";
+
 
 const Banner = () => {
 
@@ -33,10 +34,10 @@ const Banner = () => {
 // ----------------- dispatch 
       const dispatch = useDispatch()
       const navigate = useNavigate()
-const handleButton = ()=>{
-  dispatch(productNameReducer(null))
-  navigate('/Sellercomponents')
-}
+      const handleButton = ()=>{
+        dispatch(incrementByAmount(null))
+        navigate('/Sellercomponents')
+      }
 
 
   return (

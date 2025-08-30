@@ -10,6 +10,9 @@ import { FiFilter } from "react-icons/fi";
 import { useSelector } from "react-redux";
 
 const Sellercomponents = () => {
+
+  //----------------  redux
+  const reduxProduct = useSelector((state)=>state.cartData.value)
   
   const [products, setProducts] = useState([]);
   // -------------- pagination
@@ -20,10 +23,6 @@ const Sellercomponents = () => {
   const currentItems = products.slice(start, start + itemsPerPage);
   const totalPages = Math.ceil(products.length / itemsPerPage);
   
-  const reduxProduct = useSelector((state)=>state.proId.value)
-
-
-
   // ------------- api fatch
 
   useEffect(() => {
@@ -31,24 +30,19 @@ const Sellercomponents = () => {
       .get("https://api.escuelajs.co/api/v1/products")
       .then((res) =>{
        if(!reduxProduct) return setProducts(res.data)
-
         const filterProduct = res.data.filter((item)=>item.title == reduxProduct )
-
         setProducts(filterProduct)
-
-      } )
+      })
       .catch((err) => console.log(err));
-  }, []);
+  }, [reduxProduct]);
 
   // -------------- navigate
-
   const navigate = useNavigate();
   const handlebutton = (productInfo) => {
     navigate(`/AboutProducts/${productInfo.id}`);
   };
 
   // ---------------- store application
-
   const handelShow = (data) => {
     let exisId = JSON.parse(localStorage.getItem("productID")) || [];
     exisId.push(data);
@@ -77,9 +71,9 @@ const Sellercomponents = () => {
                   {/* ------------ catagory */}
                   <div>
                     <h2 className="text-[18px] font-semibold font-poppins text-second dark:text-white">
-                      {" "}
-                      Categories{" "}
-                    </h2>{" "}
+                  
+                      Categories
+                    </h2>
                   </div>
                   <div className="mt-[24px] flex gap-[12px] mb-[16px]">
                     <input id="cat-men1" className="w-[20px]  h-[20px] bg-red-200"  type="checkbox"  />
