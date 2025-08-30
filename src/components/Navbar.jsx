@@ -5,10 +5,8 @@ import { PiShoppingCart } from "react-icons/pi";
 import { Link, useNavigate } from "react-router";
 import Card from "./Card";
 import { useEffect, useState } from "react";
-import SellerCard from "./common/SellerCard";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { productNameReducer } from "../srcSlice";
 import { incrementByAmount } from "../Cartslice";
 import errorimg from '../assets/images/error.png'
 
@@ -17,6 +15,8 @@ const Navbar = () => {
 // --------------- usestate
 
 const [showCart , setShowCart] = useState(false)
+
+// ----------- local id date
 const localIds = JSON.parse(localStorage.getItem('productID'))
 
 
@@ -35,14 +35,14 @@ useEffect(() => {
  
 
 // --------------- search bar
- 
 const [searchInput , setSearchInput] = useState('')
 const [searchResult , setSearchResult] = useState(null)
+
+// ---------redux data
 const reduxProduct = useSelector((state)=>state.proId.value)
 
-
-const handleSearch =(e)=>{
-  // if(!searchInput) return alert('please input data')
+// --------- handler
+const handleSearch =()=>{
   const filterData = product.filter((item)=> item.title.toLowerCase().includes(searchInput.toLowerCase()))
   setSearchResult(filterData)
 }
@@ -52,17 +52,13 @@ const navigate = useNavigate()
 const dispatch = useDispatch()
 
 
-
+// ---------- handle-product
 const handleProduct = (productName) =>{
   navigate('/Sellercomponents')
   dispatch(incrementByAmount(productName))
   setSearchResult(null)
-  console.log('working')
 
-  
 } 
-
-
 
   return (
     <>
@@ -71,18 +67,15 @@ const handleProduct = (productName) =>{
           <div className="menu_row flex justify-between items-center">
           
             {/* ------------- main-logo */}
-
             <Link to={'/'} className="menu_logo w-[119px]"> <img src={logo} alt="logo" /></Link>
 
-            {/* -------------- search button */}
-
+            {/* -------------- search input */}
             <form className="menu_src w-[400px] h-[52px] rounded-[100px] bg-[#F8F8F8] flex items-center pl-[24px]">
               <RiSearch2Line onClick={handleSearch}  className="text-xl text-primary"/>
               <input onChange={(e)=>{setSearchInput(e.target.value) , handleSearch()}} className="w-full pl-[10px] outline-none border-none text-[14px] font-normal font-poppins" type="text" placeholder="Search in products..." />
             </form>
 
             {/* ------------- nav icon */}
-
             <div className="menu_item flex ">
            <Link to='/Login' className="text-2xl text-primary mr-[22px] dark:text-[#fff]"><RiUserLine/></Link>     
            <button onClick={()=>setShowCart(true)} className="text-2xl text-primary relative dark:text-[#fff]">
@@ -95,7 +88,7 @@ const handleProduct = (productName) =>{
         </div>
       </nav>
       
-      {/* ---------------------- <Card /> */}
+      {/* ---------------------- Card  data */}
 
       {
         showCart&&
@@ -104,32 +97,15 @@ const handleProduct = (productName) =>{
 
 
       {/* -------------------- product serach */}
-   
-   <div className="w-[700px] h-[500px] overflow-y-scroll cursor-pointer  absolute top-[79px] left-[640px] flex flex-col  gap-[30px] rounded-[8px] py-[10px] pl-[50px] z-999 bg-white  ">
-     
 
-          {
-            
-            searchResult?.length == 0 ?
-          
-        <div className=" flex justify-center">
-        <img src={errorimg} alt="errorimg" />
+      <div className="w-full py-3  ">
+        <h2 className="border-b border-green-50 pb-4 hover:bg-gray-300 duration-[.3s] text-base font-normal font-poppins text-main px-10">sdgsdfgdfghdh</h2>
 
-     
       </div>
-            :
-            searchResult?.map((item)=>(
-              
-              <div onClick={handleProduct} className=" flex items-center gap-[10px]  ">
-        <div className="w-[100px] overflow-hidden"><img src={item.images} alt="img" /></div>
-        <h2 className="text-[18px] font-medium truncate w-[400px] font-poppins text-primary">{item.title}</h2>
-        </div>
-              
-            ))
-          }
 
 
-          </div>
+
+
 
     </>
   );

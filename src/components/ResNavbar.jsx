@@ -111,7 +111,7 @@ const ResNavbar = () => {
 
       {/* -------------------- product serach */}
       <div className="flex bg-[#0000006d] justify-center">
-        <div className="w-[100vw] flex flex-wrap gap-[30px] justify-center items-center pt-6">
+        <div className="w-[100vw] lg:hidden flex flex-wrap gap-[30px] justify-center items-center pt-6">
           {searchResult?.length === 0 ? (
             <h2 className="text-[24px] font-medium font-poppins text-red-600">
               {" "}
