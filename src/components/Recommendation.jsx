@@ -57,9 +57,9 @@ const Recommendation = () => {
     ],
   };
 
-
   // ----------------- dispatch 
       const dispatch = useDispatch()
+
       const handleButton = ()=>{
         dispatch(incrementByAmount(null))
         navigate('/Sellercomponents')
